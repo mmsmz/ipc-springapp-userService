@@ -13,13 +13,13 @@ public class StudentPurchaseEntity {
     private Integer studentPurchaseId;
 
     @Column(name = "userid")
-    private String userId;
+    private Integer userId;
 
     @Column(name = "crsprid")
-    private String coursePriceId;
+    private Integer coursePriceId;
 
     @Column(name = "crsshedid")
-    private String courseScheduleId;
+    private Integer courseScheduleId;
 
     @Column(name = "paymenttype")
     private String paymentType;
@@ -33,4 +33,68 @@ public class StudentPurchaseEntity {
     @Column(name = "date")
     private Instant date;
 
+
+    public Integer getStudentPurchaseId() {
+        return studentPurchaseId;
+    }
+
+    public void setStudentPurchaseId(Integer studentPurchaseId) {
+        this.studentPurchaseId = studentPurchaseId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getCoursePriceId() {
+        return coursePriceId;
+    }
+
+    public void setCoursePriceId(Integer coursePriceId) {
+        this.coursePriceId = coursePriceId;
+    }
+
+    public Integer getCourseScheduleId() {
+        return courseScheduleId;
+    }
+
+    public void setCourseScheduleId(Integer courseScheduleId) {
+        this.courseScheduleId = courseScheduleId;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public String getReceiptImageLocation() {
+        return receiptImageLocation;
+    }
+
+    public void setReceiptImageLocation(String receiptImageLocation) {
+        this.receiptImageLocation = receiptImageLocation;
+    }
+
+    public String getDiffTypeOfBank() {
+        return diffTypeOfBank;
+    }
+
+    public void setDiffTypeOfBank(String diffTypeOfBank) {
+        this.diffTypeOfBank = diffTypeOfBank;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
+    }
 }

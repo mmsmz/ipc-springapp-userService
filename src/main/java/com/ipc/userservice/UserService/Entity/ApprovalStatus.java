@@ -23,6 +23,43 @@ public class ApprovalStatus {
     @Column(name = "comments")
     private String comments;
 
+    public Integer getApprovalStatusId() {
+        return approvalStatusId;
+    }
 
+    public void setApprovalStatusId(Integer approvalStatusId) {
+        this.approvalStatusId = approvalStatusId;
+    }
 
+    public Integer getCoursePriceId() {
+        return coursePriceId;
+    }
+
+    public void setCoursePriceId(Integer coursePriceId) {
+        this.coursePriceId = coursePriceId;
+    }
+
+    public String getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(String approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    public String getPasscode() {
+        return passcode;
+    }
+
+    public void setPasscode(String passcode) {
+        this.passcode = passcode;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public interface PurchaseService {
 
     // addCourseDetailsToSummary
-    public String addCourseDetailsToSummary(CoursePriceDto courseDto);
+    public String addCourseDetailsToSummary(StudentPurchaseDto studentPurDto);
 
     // removeCourseRecordsFromSummary
     public String removeCourseRecordsFromSummary(CoursePriceDto courseDto);

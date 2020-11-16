@@ -30,6 +30,16 @@ public class PurchaseController {
     }
 
     // addCourseDetailsToSummary
+    @GetMapping(value = "/addCourseDetailsToSummary", produces = "application/json")
+    public ResponseEntity<ResponseDto> addCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurDto) {
+        logger.info("Inside the get Purchased Course Details To Summary method Start" + studentPurDto.toString());
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setData( purchaseService.addCourseDetailsToSummary(studentPurDto));
+        logger.info("Inside the get Purchased Course Details To Summary method End");
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
 
     // removeCourseRecordsFromSummary
 
