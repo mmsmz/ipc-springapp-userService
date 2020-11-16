@@ -27,6 +27,9 @@ public class StudentPurchaseEntity {
     @Column(name = "receiptimagelocation")
     private String receiptImageLocation;
 
+    @Column(name = "amountdeposited")
+    private double amountDeposited;
+
     @Column(name = "difftypeofbank")
     private String diffTypeOfBank;
 
@@ -80,6 +83,14 @@ public class StudentPurchaseEntity {
 
     public void setReceiptImageLocation(String receiptImageLocation) {
         this.receiptImageLocation = receiptImageLocation;
+    }
+
+    public double getAmountDeposited() {
+        return amountDeposited;
+    }
+
+    public void setAmountDeposited(double amountDeposited) {
+        this.amountDeposited = amountDeposited;
     }
 
     public String getDiffTypeOfBank() {

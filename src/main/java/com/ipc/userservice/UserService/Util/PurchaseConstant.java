@@ -2,12 +2,12 @@ package com.ipc.userservice.UserService.Util;
 
 public class PurchaseConstant {
 
-    
+
     public static final String SUCCESS = "success";
 
-    public static final String SUCCESSFULLY_REGISTERED =  "Successfully Registered";
-    public static final String EMAIL_ALREADY_EXISTING = "Email is Already Existing";
-    public static final String MOBILE_ALREADY_EXISTING = "Mobile is Already Existing";
-    public static final String NICNR_ALREADY_EXISTING = "NIC ID is Already Existing";
+    public static final String SUCCESSFULLY_REGISTERED = "Successfully Registered";
+
+    public static final String ERROR = "Data Doesn't Exits";
+
 
 }

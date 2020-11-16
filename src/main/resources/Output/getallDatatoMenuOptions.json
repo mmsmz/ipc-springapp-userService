@@ -1,0 +1,66 @@
+// getAllMenuOptionsToPage
+{
+  "message": "success",
+  "data": [
+    {
+      "subjects": [
+        {
+          "subjectName": "Economic",
+          "classCategory" :[
+            {
+              "subjectCategory" : "2021 Rev",
+              "price" : "2000",
+              "schedule" : [
+                {
+                  "dateTime" : "Saturday 1:00PM to 3:00PM"
+                },
+                {
+                  "dateTime" : "Wednesday 12:00PM to 2:00PM"
+                }
+              ]
+            },
+            {
+              "subjectCategory" : "2021 Theory",
+              "price" : "2500",
+              "schedule" : [
+                {
+                  "dateTime" : "Saturday 1:00PM to 3:00PM"
+                },
+                {
+                  "dateTime" : "Wednesday 12:00PM to 2:00PM"
+                }
+              ]
+            },
+            {"subjectCategory" : "2022 Theory",
+              "price" : "2600"
+            }
+          ]
+        },
+        {
+          "subjectName": "Business",
+          "classCategory" :[
+            {
+              "subjectCategory" : "2021 Rev",
+              "price" : "2000",
+              "schedule" : [
+                {
+                  "dateTime" : "Saturday 1:00PM to 3:00PM"
+                },
+                {
+                  "dateTime" : "Wednesday 12:00PM to 2:00PM"
+                }
+              ]
+            },
+            {
+              "subjectCategory" : "2021 Theory",
+              "price" : "2500"
+            },
+            {"subjectCategory" : "2022 Theory",
+              "price" : "2600"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

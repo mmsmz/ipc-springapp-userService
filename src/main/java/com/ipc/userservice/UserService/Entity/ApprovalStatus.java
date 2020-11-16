@@ -10,7 +10,7 @@ public class ApprovalStatus {
     @Column(name = "apvlstatid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer approvalStatusId;
-
+    
     @Column(name = "crsprid")
     private Integer coursePriceId;
 

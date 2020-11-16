@@ -29,39 +29,65 @@ public class PurchaseController {
         return "<h1>Welcome!!!</h1>";
     }
 
-    // addCourseDetailsToSummary
-    @GetMapping(value = "/addCourseDetailsToSummary", produces = "application/json")
+    /* To Add Course Details To Summary
+     * the following data will be saved into the student purchase table
+     * */
+    @PostMapping(value = "/addCourseDetailsToSummary", produces = "application/json")
     public ResponseEntity<ResponseDto> addCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the get Purchased Course Details To Summary method Start" + studentPurDto.toString());
+        logger.info("Inside the Add Course Details To Summary method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(PurchaseConstant.SUCCESS);
-        responseDto.setData( purchaseService.addCourseDetailsToSummary(studentPurDto));
-        logger.info("Inside the get Purchased Course Details To Summary method End");
+        responseDto.setData(purchaseService.addCourseDetailsToSummary(studentPurDto));
+        logger.info("Inside the Add Course Details To Summary method End");
+
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    // removeCourseRecordsFromSummary
-
-    /* To Get Purchased Course Details To Summary Table */
-    @GetMapping(value = "/getPurchasedCourseDetailsToSummary", produces = "application/json")
-    public ResponseEntity<ResponseDto> getPurchasedCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurchaseDto) {
-        logger.info("Inside the get Purchased Course Details To Summary method Start" + studentPurchaseDto.toString());
+    /* To Remove Course Records From Summary Table
+    * the following data will be removed from student purchase table
+    * */
+    @PostMapping(value = "/removeCourseRecordsFromSummary", produces = "application/json")
+    public ResponseEntity<ResponseDto> removeCourseRecordsFromSummary(@RequestBody StudentPurchaseDto studentPurchaseDto) {
+        logger.info("Inside the Remove Course Records From Summary method Start" + studentPurchaseDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(PurchaseConstant.SUCCESS);
-        responseDto.setData( purchaseService.getPurchasedCourseDetailsToSummary(studentPurchaseDto));
-        logger.info("Inside the get Purchased Course Details To Summary method End");
+        responseDto.setData(purchaseService.removeCourseRecordsFromSummary(studentPurchaseDto));
+        logger.info("Inside the Remove Course Records From Summary method End");
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
+    /* To Get Purchased Course Details To Summary Table
+    *  the following data will be retrieved from student purchase table
+    * */
+    @GetMapping(value = "/getPurchasedCourseDetailsToSummary", produces = "application/json")
+    public ResponseEntity<ResponseDto> getPurchasedCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurDto) {
+        logger.info("Inside the Get Purchased Course Details To Summary method Start" + studentPurDto.toString());
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setData(purchaseService.getPurchasedCourseDetailsToSummary(studentPurDto));
+        logger.info("Inside the Get Purchased Course Details To Summary method End");
+
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
     /* To Get All Menu Options To Page */
+    @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
+    public ResponseEntity<ResponseDto> getAllMenuOptionsToPage(@RequestBody StudentPurchaseDto studentPurDto) {
+        logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
 
-    /* To Add Course Details To Summary */
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setData(purchaseService.getAllMenuOptionsToPage(studentPurDto));
+        logger.info("Inside the Get All Menu Options To Page method End");
 
-    /* To Remove Course Records From Summary */
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
 
-    /* To Get Purchased Course Details To Summary Table */
+
     @GetMapping("/admin")
     public String admin() {
         return "<h1>Hello Admin</h1>";

@@ -18,22 +18,12 @@ public class StudentPurchaseDto {
 
     private String receiptImageLocation;
 
+    private double amountDeposited;
+
     private String diffTypeOfBank;
 
     private Instant date;
 
-    @Override
-    public String toString() {
-        return "StudentPurchaseDto{" +
-                "userId=" + userId +
-                ", coursePriceId=" + coursePriceId +
-                ", courseScheduleId=" + courseScheduleId +
-                ", paymentType='" + paymentType + '\'' +
-                ", receiptImageLocation='" + receiptImageLocation + '\'' +
-                ", diffTypeOfBank='" + diffTypeOfBank + '\'' +
-                ", date=" + date +
-                '}';
-    }
 
     public Integer getUserId() {
         return userId;
@@ -73,6 +63,14 @@ public class StudentPurchaseDto {
 
     public void setReceiptImageLocation(String receiptImageLocation) {
         this.receiptImageLocation = receiptImageLocation;
+    }
+
+    public double getAmountDeposited() {
+        return amountDeposited;
+    }
+
+    public void setAmountDeposited(double amountDeposited) {
+        this.amountDeposited = amountDeposited;
     }
 
     public String getDiffTypeOfBank() {
