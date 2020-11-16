@@ -1,6 +1,5 @@
 package com.ipc.userservice.UserService.Controller;
 
-import com.ipc.userservice.UserService.Dto.CoursePriceDto;
 import com.ipc.userservice.UserService.Dto.ResponseDto;
 import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
 import com.ipc.userservice.UserService.Service.PurchaseService;
@@ -59,6 +58,7 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
+    // refer the Resourse -> output -> .json
     /* To Get Purchased Course Details To Summary Table
     *  the following data will be retrieved from student purchase table
     * */
@@ -74,7 +74,11 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    /* To Get All Menu Options To Page */
+    /* To Get All Menu Options To Page
+    *  getting the following data from CoursePrice and CourseSchedule Tables
+    *
+    * */
+
     @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
     public ResponseEntity<ResponseDto> getAllMenuOptionsToPage(@RequestBody StudentPurchaseDto studentPurDto) {
         logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
@@ -86,7 +90,6 @@ public class PurchaseController {
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
-
 
     @GetMapping("/admin")
     public String admin() {
