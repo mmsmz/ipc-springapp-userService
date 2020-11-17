@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class CourseScheduleEntity {
 
     @Id
-    @Column(name = "crsshedid")
+    @Column(name = "crsschedid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courseScheduleId;
 

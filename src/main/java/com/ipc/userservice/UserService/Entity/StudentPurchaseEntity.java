@@ -18,7 +18,7 @@ public class StudentPurchaseEntity {
     @Column(name = "crsprid")
     private Integer coursePriceId;
 
-    @Column(name = "crsshedid")
+    @Column(name = "crsschedid")
     private Integer courseScheduleId;
 
     @Column(name = "paymenttype")
