@@ -3,7 +3,7 @@ package com.ipc.userservice.UserService.Util;
 public class PurchaseConstant {
 
 
-    public static final String SUCCESS = "success";
+    public static final String SUCCESS = "Success";
 
     public static final String SUCCESSFULLY_REGISTERED = "Successfully Registered";
 

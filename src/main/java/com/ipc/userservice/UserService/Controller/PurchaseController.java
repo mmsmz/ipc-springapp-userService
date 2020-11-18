@@ -91,13 +91,6 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-
-    //write an API to confirm the purchase
-    @GetMapping(value = "/confirmPurchase", produces = "application/json")
-    public ResponseEntity<ResponseDto> confirmPurchasse(@RequestBody StudentPurchaseDto studentPurDto) {
-        return null;
-    }
-
     @GetMapping("/admin")
     public String admin() {
         return "<h1>Hello Admin</h1>";
