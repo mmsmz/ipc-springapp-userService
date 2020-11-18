@@ -19,4 +19,9 @@ public interface PurchaseService {
     /* To Get All Menu Options To Purchase Cart Page */
     String getAllMenuOptionsToPage(StudentPurchaseDto studentPurDto);
 
+    /* Student confirm Purchase */
+    String confirmPurchase(StudentPurchaseDto studentPurchaseDto);
+
+
+
 }

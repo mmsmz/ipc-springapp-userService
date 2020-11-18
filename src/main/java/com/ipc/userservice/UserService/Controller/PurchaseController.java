@@ -91,6 +91,19 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
+    //write an API to confirm the purchase
+    @PostMapping(value = "/confirmPurchase", produces = "application/json")
+    public ResponseEntity<ResponseDto> confirmPurchase(@RequestBody StudentPurchaseDto studentPurDto) {
+        logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setData(purchaseService.getAllMenuOptionsToPage(studentPurDto));
+        logger.info("Inside the Get All Menu Options To Page method End");
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
     @GetMapping("/admin")
     public String admin() {
         return "<h1>Hello Admin</h1>";
