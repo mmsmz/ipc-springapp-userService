@@ -5,7 +5,7 @@ import com.ipc.userservice.UserService.Controller.PurchaseController;
 import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
 import com.ipc.userservice.UserService.Entity.StudentPurchaseEntity;
 import com.ipc.userservice.UserService.Service.PurchaseService;
-import com.ipc.userservice.UserService.Util.PurchaseConstant;
+import com.ipc.userservice.UserService.Util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
             purchaseRepository.save(studentPurEntity);
-            return PurchaseConstant.SUCCESSFULLY_REGISTERED;
+            return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();
@@ -73,11 +73,11 @@ public class PurchaseServiceImpl implements PurchaseService {
                 studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
                 studentPurEntity.setDate(Instant.now());
                 // purchaseRepository.getOne();
-                return PurchaseConstant.SUCCESSFULLY_REGISTERED;
+                return CommonConstant.SUCCESSFULLY_REGISTERED;
             }
             else {
-                logger.info(PurchaseConstant.ERROR);
-                return PurchaseConstant.ERROR;
+                logger.info(CommonConstant.ERROR);
+                return CommonConstant.ERROR;
             }
         } catch (Exception e) {
             logger.info(e.getMessage());
@@ -109,7 +109,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
             // purchaseRepository.save(studentPurEntity); get
-            return PurchaseConstant.SUCCESSFULLY_REGISTERED;
+            return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();
@@ -131,7 +131,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
             // purchaseRepository.save(studentPurEntity);
-            return PurchaseConstant.SUCCESSFULLY_REGISTERED;
+            return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();

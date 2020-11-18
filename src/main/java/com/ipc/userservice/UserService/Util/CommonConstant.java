@@ -1,6 +1,6 @@
 package com.ipc.userservice.UserService.Util;
 
-public class PurchaseConstant {
+public class CommonConstant {
 
 
     public static final String SUCCESS = "Success";

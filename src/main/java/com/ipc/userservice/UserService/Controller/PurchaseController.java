@@ -3,7 +3,7 @@ package com.ipc.userservice.UserService.Controller;
 import com.ipc.userservice.UserService.Dto.ResponseDto;
 import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
 import com.ipc.userservice.UserService.Service.PurchaseService;
-import com.ipc.userservice.UserService.Util.PurchaseConstant;
+import com.ipc.userservice.UserService.Util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @GetMapping("/")
-    String home() {
+    String purchase() {
         return "<h1>Welcome!!!</h1>";
     }
 
@@ -36,7 +36,7 @@ public class PurchaseController {
         logger.info("Inside the Add Course Details To Summary method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.addCourseDetailsToSummary(studentPurDto));
         logger.info("Inside the Add Course Details To Summary method End");
 
@@ -51,7 +51,7 @@ public class PurchaseController {
         logger.info("Inside the Remove Course Records From Summary method Start" + studentPurchaseDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.removeCourseRecordsFromSummary(studentPurchaseDto));
         logger.info("Inside the Remove Course Records From Summary method End");
 
@@ -67,7 +67,7 @@ public class PurchaseController {
         logger.info("Inside the Get Purchased Course Details To Summary method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.getPurchasedCourseDetailsToSummary(studentPurDto));
         logger.info("Inside the Get Purchased Course Details To Summary method End");
 
@@ -83,7 +83,7 @@ public class PurchaseController {
         logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.getAllMenuOptionsToPage(studentPurDto));
         logger.info("Inside the Get All Menu Options To Page method End");
 
@@ -98,7 +98,7 @@ public class PurchaseController {
         logger.info("Inside the student confirm Purchase method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(PurchaseConstant.SUCCESS);
+        responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.confirmPurchase(studentPurDto));
         logger.info("Inside the student confirm Purchase method End");
 
