@@ -11,12 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+//@CrossOrigin(origins = "*")
 public class AdminController {
 
     /**
@@ -60,7 +58,7 @@ public class AdminController {
      /* Dashboard
        > Student
             - manage users [Student] (view, search, add, deactivate)
-       > Course Details >>  (manage subjects, manage subjectcategory, manage subjectschedule)
+       > Course Details >>  (manage subjectsType, manage subjectCategory, manage subjectSchedule)
            - manage coursePrice (crsPriceId, subjectName, SubjectCategory, Price)
            - manage courseSchedule  (crsSchedId,crsPriceId, Day,Time)
        > Home Page
@@ -72,8 +70,13 @@ public class AdminController {
             - Manage approvalStatus (apvlStatid, studpurid, approvalStatus, passcode, comments)
        > Reports (generating 7 reports)
        > Users - manger (add, view, deactivate)
-       
+
      */
+     // student
+       // - student details (displaying the name)
+       // - updating the balance details if the student signs in from google account
+       // - history of purchase details
+       // - notifications alerts
 
 
 }
