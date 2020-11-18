@@ -8,7 +8,7 @@ import java.time.Instant;
 public class StudentPurchaseEntity {
 
     @Id
-    @Column(name = "studpurchId")
+    @Column(name = "studpurid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentPurchaseId;
 
@@ -35,7 +35,6 @@ public class StudentPurchaseEntity {
 
     @Column(name = "date")
     private Instant date;
-
 
     public Integer getStudentPurchaseId() {
         return studentPurchaseId;

@@ -11,8 +11,8 @@ public class ApprovalStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer approvalStatusId;
     
-    @Column(name = "crsprid")
-    private Integer coursePriceId;
+    @Column(name = "studpurid")
+    private Integer studentPurchaseID;
 
     @Column(name = "approvalstatus")
     private String approvalStatus;
@@ -31,12 +31,12 @@ public class ApprovalStatus {
         this.approvalStatusId = approvalStatusId;
     }
 
-    public Integer getCoursePriceId() {
-        return coursePriceId;
+    public Integer getStudentPurchaseID() {
+        return studentPurchaseID;
     }
 
-    public void setCoursePriceId(Integer coursePriceId) {
-        this.coursePriceId = coursePriceId;
+    public void setStudentPurchaseID(Integer studentPurchaseID) {
+        this.studentPurchaseID = studentPurchaseID;
     }
 
     public String getApprovalStatus() {
