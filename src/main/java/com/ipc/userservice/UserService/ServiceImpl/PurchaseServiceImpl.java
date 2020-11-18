@@ -1,8 +1,7 @@
 package com.ipc.userservice.UserService.ServiceImpl;
 
-import Repository.PurchaseRepository;
+import com.ipc.userservice.Repository.PurchaseRepository;
 import com.ipc.userservice.UserService.Controller.PurchaseController;
-import com.ipc.userservice.UserService.Dto.CoursePriceDto;
 import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
 import com.ipc.userservice.UserService.Entity.StudentPurchaseEntity;
 import com.ipc.userservice.UserService.Service.PurchaseService;
@@ -17,7 +16,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Service
-@EnableJpaRepositories("com.ipc.PurchaseService.Repository")
+@EnableJpaRepositories("com.ipc.userService.Repository")
 public class PurchaseServiceImpl implements PurchaseService {
 
     /**
