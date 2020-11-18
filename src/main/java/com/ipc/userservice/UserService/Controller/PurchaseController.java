@@ -78,7 +78,6 @@ public class PurchaseController {
     *  getting the following data from CoursePrice and CourseSchedule Tables
     *
     * */
-
     @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
     public ResponseEntity<ResponseDto> getAllMenuOptionsToPage(@RequestBody StudentPurchaseDto studentPurDto) {
         logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
@@ -91,15 +90,17 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    //write an API to confirm the purchase
+    /*  To allow Student to confirm the purchase details
+     *
+     * */
     @PostMapping(value = "/confirmPurchase", produces = "application/json")
     public ResponseEntity<ResponseDto> confirmPurchase(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
+        logger.info("Inside the student confirm Purchase method Start" + studentPurDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(PurchaseConstant.SUCCESS);
-        responseDto.setData(purchaseService.getAllMenuOptionsToPage(studentPurDto));
-        logger.info("Inside the Get All Menu Options To Page method End");
+        responseDto.setData(purchaseService.confirmPurchase(studentPurDto));
+        logger.info("Inside the student confirm Purchase method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }

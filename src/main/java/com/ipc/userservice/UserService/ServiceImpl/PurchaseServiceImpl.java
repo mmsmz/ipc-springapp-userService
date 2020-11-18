@@ -90,7 +90,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Override
     public String getAllMenuOptionsToPage(StudentPurchaseDto studentPurDto) {
 
-       /* subject type, subject category. price from coursePrice Table
+        /* subject type, subject category. price from coursePrice Table
             - Subject Type - Economic or Business
             - Subject Category - 2021 Revision, 2021 Theory, 2022 Theory
             - summary table
@@ -99,10 +99,9 @@ public class PurchaseServiceImpl implements PurchaseService {
             - class DateTime Menu - show wednesday + startTime to EndTime
         */
         try {
-
             StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
             studentPurEntity.setUserId(studentPurDto.getUserId());
-            studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
+          //  studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
             studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
             studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
             studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
@@ -117,10 +116,29 @@ public class PurchaseServiceImpl implements PurchaseService {
         }
     }
 
+    /* To allow Student to confirm the purchase details */
     @Override
-    public String confirmPurchase(StudentPurchaseDto studentPurchaseDto) {
-        return null;
+    public String confirmPurchase(StudentPurchaseDto studentPurDto) {
+
+        try {
+            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+            studentPurEntity.setUserId(studentPurDto.getUserId());
+            studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
+            studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
+            studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
+            studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+            studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
+            studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+            studentPurEntity.setDate(Instant.now());
+            // purchaseRepository.save(studentPurEntity);
+            return PurchaseConstant.SUCCESSFULLY_REGISTERED;
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            return e.getMessage();
+        }
     }
+
+
 
 
 }
