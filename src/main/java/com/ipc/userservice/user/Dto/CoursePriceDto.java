@@ -1,31 +1,18 @@
-package com.ipc.userservice.UserService.Entity;
+package com.ipc.userservice.user.Dto;
 
-import javax.persistence.*;
+public class CoursePriceDto {
 
-@Entity
-@Table(name = "courseprice")
-public class CoursePriceEntity {
-
-    @Id
-    @Column(name = "crsprid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer coursePriceId;
-
-    @Column(name = "subjectname")
     private String subjectName;
-
-    @Column(name = "subjectcategory")
     private String subjectCategory;
-
-    @Column(name = "price")
     private double price;
 
-    public Integer getCoursePriceId() {
-        return coursePriceId;
-    }
-
-    public void setCoursePriceId(Integer coursePriceId) {
-        this.coursePriceId = coursePriceId;
+    @Override
+    public String toString() {
+        return "CoursePriceDto{" +
+                "subjectName='" + subjectName + '\'' +
+                ", subjectCategory='" + subjectCategory + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public String getSubjectName() {
@@ -51,4 +38,5 @@ public class CoursePriceEntity {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.ipc.userservice.UserService.Dto;
+package com.ipc.userservice.user.Dto;
 
 public class ResponseDto {
     private String message;

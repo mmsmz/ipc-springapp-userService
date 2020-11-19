@@ -1,4 +1,4 @@
-package com.ipc.userservice.UserService.Entity;
+package com.ipc.userservice.user.Entity;
 
 import javax.persistence.*;
 

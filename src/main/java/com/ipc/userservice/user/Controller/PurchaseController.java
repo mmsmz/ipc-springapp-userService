@@ -1,9 +1,9 @@
-package com.ipc.userservice.UserService.Controller;
+package com.ipc.userservice.user.Controller;
 
-import com.ipc.userservice.UserService.Dto.ResponseDto;
-import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
-import com.ipc.userservice.UserService.Service.PurchaseService;
-import com.ipc.userservice.UserService.Util.CommonConstant;
+import com.ipc.userservice.user.Dto.ResponseDto;
+import com.ipc.userservice.user.Dto.StudentPurchaseDto;
+import com.ipc.userservice.user.Service.PurchaseService;
+import com.ipc.userservice.user.Util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("PurchaseController")
 public class PurchaseController {
 
     /**
@@ -22,11 +23,6 @@ public class PurchaseController {
 
     @Autowired
     PurchaseService purchaseService;
-
-    @GetMapping("/")
-    String purchase() {
-        return "<h1>Welcome!!!</h1>";
-    }
 
     /* To Add Course Details To Summary
      * the following data will be saved into the student purchase table
@@ -105,9 +101,9 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "<h1>Hello Admin</h1>";
-    }
+//    @GetMapping("/admin")
+//    public String admin() {
+//        return "<h1>Hello Admin</h1>";
+//    }
 
 }

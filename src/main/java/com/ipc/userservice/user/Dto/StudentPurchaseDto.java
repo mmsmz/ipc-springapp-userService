@@ -1,9 +1,5 @@
-package com.ipc.userservice.UserService.Dto;
+package com.ipc.userservice.user.Dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.Instant;
 
 public class StudentPurchaseDto {

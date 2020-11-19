@@ -1,20 +1,17 @@
-package com.ipc.userservice.UserService.Controller;
+package com.ipc.userservice.user.Controller;
 
-import com.ipc.userservice.UserService.Dto.ResponseDto;
-import com.ipc.userservice.UserService.Dto.StudentPurchaseDto;
-import com.ipc.userservice.UserService.Dto.UserDto;
-import com.ipc.userservice.UserService.Service.AdminService;
-import com.ipc.userservice.UserService.Service.PurchaseService;
-import com.ipc.userservice.UserService.Util.CommonConstant;
+import com.ipc.userservice.user.Dto.ResponseDto;
+import com.ipc.userservice.user.Dto.UserDto;
+import com.ipc.userservice.user.Service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
+@RequestMapping("AdminController")
 public class AdminController {
 
     /**
@@ -48,6 +45,8 @@ public class AdminController {
         return null;
     }
 
+    // NEED TO implement the following APIs
+
     /* Home Page Api's
     *  - show Banners and smaller Banners and logos
        - show optional - updating modules (Not Necessary)
@@ -55,7 +54,14 @@ public class AdminController {
     *  -
     * */
 
-     /* Dashboard
+      /* student Profile Page
+        - student details (displaying the name)
+        - updating the balance details if the student signs in from google account
+        - history of purchase details
+        - notifications alerts
+      */
+
+       /* Dashboard
        > Student
             - manage users [Student] (view, search, add, deactivate)
        > Course Details >>  (manage subjectsType, manage subjectCategory, manage subjectSchedule)
@@ -71,12 +77,6 @@ public class AdminController {
        > Reports (generating 7 reports)
        > Users - manger (add, view, deactivate)
 
-     */
-     // student
-       // - student details (displaying the name)
-       // - updating the balance details if the student signs in from google account
-       // - history of purchase details
-       // - notifications alerts
-
+       */
 
 }

@@ -1,6 +1,4 @@
-package com.ipc.userservice.UserService.Dto;
-
-import java.time.Instant;
+package com.ipc.userservice.user.Dto;
 
 public class ApprovalStatusDto {
 

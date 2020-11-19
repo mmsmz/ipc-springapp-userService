@@ -1,8 +1,8 @@
-package com.ipc.userservice.Repository;
+package com.ipc.userservice.user.Repository;
 
-import com.ipc.userservice.UserService.Entity.CoursePriceEntity;
-import com.ipc.userservice.UserService.Entity.CourseScheduleEntity;
-import com.ipc.userservice.UserService.Entity.StudentPurchaseEntity;
+import com.ipc.userservice.user.Entity.CoursePriceEntity;
+import com.ipc.userservice.user.Entity.CourseScheduleEntity;
+import com.ipc.userservice.user.Entity.StudentPurchaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
