@@ -24,6 +24,22 @@ public class PurchaseController {
     @Autowired
     PurchaseService purchaseService;
 
+    /* To Get All Menu Options To Page
+     *  getting the following data from CoursePrice and CourseSchedule Tables
+     *
+     * */
+    @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
+    public ResponseEntity<ResponseDto> getAllMenuOptionsToPage() {
+        logger.info("Inside the Get All Menu Options To Page method Start");
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(CommonConstant.SUCCESS);
+        responseDto.setData(purchaseService.getAllMenuOptionsToPage());
+        logger.info("Inside the Get All Menu Options To Page method End");
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
     /* To Add Course Details To Summary
      * the following data will be saved into the student purchase table
      * */
@@ -66,22 +82,6 @@ public class PurchaseController {
         responseDto.setMessage(CommonConstant.SUCCESS);
         responseDto.setData(purchaseService.getPurchasedCourseDetailsToSummary(studentPurDto));
         logger.info("Inside the Get Purchased Course Details To Summary method End");
-
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
-    }
-
-    /* To Get All Menu Options To Page
-    *  getting the following data from CoursePrice and CourseSchedule Tables
-    *
-    * */
-    @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
-    public ResponseEntity<ResponseDto> getAllMenuOptionsToPage() {
-        logger.info("Inside the Get All Menu Options To Page method Start");
-
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.getAllMenuOptionsToPage());
-        logger.info("Inside the Get All Menu Options To Page method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }

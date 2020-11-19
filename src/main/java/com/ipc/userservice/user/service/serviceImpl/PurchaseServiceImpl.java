@@ -29,6 +29,32 @@ public class PurchaseServiceImpl implements PurchaseService {
     PurchaseRepository purchaseRepository;
 
 
+    /* To Get All Menu Options To Page */
+    @Override
+    public String getAllMenuOptionsToPage() {
+
+        /* subject type, subject category. price from coursePrice Table
+            - Subject Type - Economic or Business
+            - Subject Category - 2021 Revision, 2021 Theory, 2022 Theory
+            - summary table
+
+        * crsprId, day and time from  courseSchedule table
+            - class DateTime Menu - show wednesday + startTime to EndTime
+        */
+        try {
+            CoursePriceDto coursePriceDto = new CoursePriceDto();
+            CoursePriceEntity coursePriceEntity = new CoursePriceEntity();
+            coursePriceEntity.setSubjectName(coursePriceDto.getSubjectName());
+            coursePriceEntity.setSubjectCategory(coursePriceDto.getSubjectCategory());
+            coursePriceEntity.setPrice(coursePriceDto.getPrice());
+            purchaseRepository.findAll();
+            return CommonConstant.SUCCESSFULLY;
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            return e.getMessage();
+        }
+    }
+
     /* To Add Course Details To Summary */
     @Override
     public String addCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
@@ -44,7 +70,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
             purchaseRepository.save(studentPurEntity);
-            return CommonConstant.SUCCESSFULLY_REGISTERED;
+            return CommonConstant.SUCCESSFULLY;
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();
@@ -65,7 +91,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
             purchaseRepository.deleteById(studentPurDto.getUserId());
-            return CommonConstant.SUCCESSFULLY_REGISTERED;
+            return CommonConstant.SUCCESSFULLY;
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();
@@ -88,8 +114,8 @@ public class PurchaseServiceImpl implements PurchaseService {
                 studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
                 studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
                 studentPurEntity.setDate(Instant.now());
-                purchaseRepository.findAll();
-                return CommonConstant.SUCCESSFULLY_REGISTERED;
+              //  purchaseRepository.findAllById(studentPurDto.getUserId());
+                return CommonConstant.SUCCESSFULLY;
             }
             else {
                 logger.info(CommonConstant.ERROR);
@@ -102,52 +128,28 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     }
 
-    /* To Get All Menu Options To Page */
-    @Override
-    public String getAllMenuOptionsToPage() {
-
-        /* subject type, subject category. price from coursePrice Table
-            - Subject Type - Economic or Business
-            - Subject Category - 2021 Revision, 2021 Theory, 2022 Theory
-            - summary table
-
-        * crsprId, day and time from  courseSchedule table
-            - class DateTime Menu - show wednesday + startTime to EndTime
-        */
-        try {
-            CoursePriceDto coursePriceDto = new CoursePriceDto();
-            CoursePriceEntity coursePriceEntity = new CoursePriceEntity();
-            coursePriceEntity.setSubjectName(coursePriceDto.getSubjectName());
-            coursePriceEntity.setSubjectCategory(coursePriceDto.getSubjectCategory());
-            coursePriceEntity.setPrice(coursePriceDto.getPrice());
-            purchaseRepository.findAll();
-            return CommonConstant.SUCCESSFULLY_REGISTERED;
-        } catch (Exception e) {
-            logger.info(e.getMessage());
-            return e.getMessage();
-        }
-    }
-
     /* To allow Student to confirm the purchase details */
     @Override
     public String confirmPurchase(StudentPurchaseDto studentPurDto) {
-
+        // updating the purchase
         try {
-            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-            studentPurEntity.setUserId(studentPurDto.getUserId());
-            studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
-            studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-            studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-            studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-            studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-            studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-            studentPurEntity.setDate(Instant.now());
-            purchaseRepository.save(studentPurEntity);
-            return CommonConstant.SUCCESSFULLY_REGISTERED;
+            StudentPurchaseEntity existingStudentPurchase = purchaseRepository.findById(studentPurDto.getUserId()).orElse(null);
+
+            existingStudentPurchase.setUserId(studentPurDto.getUserId());
+            existingStudentPurchase.setCoursePriceId(studentPurDto.getCoursePriceId());
+            existingStudentPurchase.setCourseScheduleId(studentPurDto.getCourseScheduleId());
+            existingStudentPurchase.setPaymentType(studentPurDto.getPaymentType());
+            existingStudentPurchase.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+            existingStudentPurchase.setAmountDeposited(studentPurDto.getAmountDeposited());
+            existingStudentPurchase.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+            existingStudentPurchase.setDate(Instant.now());
+            purchaseRepository.save(existingStudentPurchase);
+            logger.info("Updated {}",CommonConstant.SUCCESSFULLY);
         } catch (Exception e) {
             logger.info(e.getMessage());
             return e.getMessage();
         }
+        return null;
     }
 
 
