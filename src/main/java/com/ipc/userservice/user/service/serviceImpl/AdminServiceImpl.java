@@ -2,7 +2,7 @@ package com.ipc.userservice.user.service.serviceImpl;
 
 import com.ipc.userservice.user.dto.CoursePriceDto;
 import com.ipc.userservice.user.entity.CoursePriceEntity;
-import com.ipc.userservice.user.repository.AdminRepository;
+import com.ipc.userservice.user.repository.CoursePriceRepository;
 import com.ipc.userservice.user.service.AdminService;
 import com.ipc.userservice.user.util.CommonConstant;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class AdminServiceImpl implements AdminService {
     final Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
 
     @Autowired
-    AdminRepository adminRepository;
+    CoursePriceRepository adminRepository;
 
     // To Add Course & Price Details
     @Override

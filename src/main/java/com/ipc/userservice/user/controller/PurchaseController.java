@@ -75,12 +75,12 @@ public class PurchaseController {
     *
     * */
     @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
-    public ResponseEntity<ResponseDto> getAllMenuOptionsToPage(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the Get All Menu Options To Page method Start" + studentPurDto.toString());
+    public ResponseEntity<ResponseDto> getAllMenuOptionsToPage() {
+        logger.info("Inside the Get All Menu Options To Page method Start");
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.getAllMenuOptionsToPage(studentPurDto));
+        responseDto.setData(purchaseService.getAllMenuOptionsToPage());
         logger.info("Inside the Get All Menu Options To Page method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);

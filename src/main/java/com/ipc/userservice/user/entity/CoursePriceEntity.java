@@ -9,10 +9,10 @@ import javax.persistence.*;
 public class CoursePriceEntity {
 
     @Id
-    @GenericGenerator(name = "sequence_crspr_id", strategy = "com.ipc.userservice.util.generateid.CoursePriceIdGenerator")
+    @GenericGenerator(name = "sequence_crspr_id", strategy = "com.ipc.userservice.user.util.generateid.CoursePriceIdGenerator")
     @GeneratedValue(generator = "sequence_crspr_id")
     @Column(name = "crsprid")
-    private Integer coursePriceId;
+    private String coursePriceId;
 
     @Column(name = "subjectname")
     private String subjectName;
@@ -23,11 +23,11 @@ public class CoursePriceEntity {
     @Column(name = "price")
     private double price;
 
-    public Integer getCoursePriceId() {
+    public String getCoursePriceId() {
         return coursePriceId;
     }
 
-    public void setCoursePriceId(Integer coursePriceId) {
+    public void setCoursePriceId(String coursePriceId) {
         this.coursePriceId = coursePriceId;
     }
 

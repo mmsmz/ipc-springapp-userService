@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.service.serviceImpl;
 
+import com.ipc.userservice.user.dto.CoursePriceDto;
+import com.ipc.userservice.user.entity.CoursePriceEntity;
 import com.ipc.userservice.user.repository.PurchaseRepository;
 import com.ipc.userservice.user.controller.PurchaseController;
 import com.ipc.userservice.user.dto.StudentPurchaseDto;
@@ -71,7 +73,7 @@ public class PurchaseServiceImpl implements PurchaseService {
                 studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
                 studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
                 studentPurEntity.setDate(Instant.now());
-                // purchaseRepository.getOne();
+                purchaseRepository.findAll();
                 return CommonConstant.SUCCESSFULLY_REGISTERED;
             }
             else {
@@ -87,7 +89,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     /* To Get All Menu Options To Page */
     @Override
-    public String getAllMenuOptionsToPage(StudentPurchaseDto studentPurDto) {
+    public String getAllMenuOptionsToPage() {
 
         /* subject type, subject category. price from coursePrice Table
             - Subject Type - Economic or Business
@@ -98,16 +100,12 @@ public class PurchaseServiceImpl implements PurchaseService {
             - class DateTime Menu - show wednesday + startTime to EndTime
         */
         try {
-            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-            studentPurEntity.setUserId(studentPurDto.getUserId());
-          //  studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
-            studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-            studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-            studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-            studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-            studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-            studentPurEntity.setDate(Instant.now());
-            // purchaseRepository.save(studentPurEntity); get
+            CoursePriceDto coursePriceDto = new CoursePriceDto();
+            CoursePriceEntity coursePriceEntity = new CoursePriceEntity();
+            coursePriceEntity.setSubjectName(coursePriceDto.getSubjectName());
+            coursePriceEntity.setSubjectCategory(coursePriceDto.getSubjectCategory());
+            coursePriceEntity.setPrice(coursePriceDto.getPrice());
+           // purchaseRepository.findAllById(coursePriceDto);
             return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
@@ -129,7 +127,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
             studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
             studentPurEntity.setDate(Instant.now());
-            // purchaseRepository.save(studentPurEntity);
+            purchaseRepository.save(studentPurEntity);
             return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
