@@ -1,11 +1,14 @@
 package com.ipc.userservice.user.controller;
 
+import com.ipc.userservice.user.dto.CoursePriceDto;
 import com.ipc.userservice.user.dto.ResponseDto;
 import com.ipc.userservice.user.dto.UserDto;
 import com.ipc.userservice.user.service.AdminService;
+import com.ipc.userservice.user.util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,4 +82,19 @@ public class AdminController {
 
        */
 
+    /** Dashboard
+     * Course Details >> To Add Course & Price Details
+     * add data
+     */
+    @PostMapping(value = "/addCoursePriceDetails", produces = "application/json")
+    public ResponseEntity<ResponseDto> addCoursePriceDetails(@RequestBody CoursePriceDto coursePriceDto) {
+        logger.info("Inside the Add Course Price Details method Start {}", coursePriceDto.toString());
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(CommonConstant.SUCCESS);
+        responseDto.setData( adminService.addCoursePriceDetails(coursePriceDto));
+        logger.info("Inside the Add Course Price Details method End");
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
 }

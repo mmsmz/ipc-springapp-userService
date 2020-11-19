@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,8 +9,9 @@ import javax.persistence.*;
 public class CoursePriceEntity {
 
     @Id
+    @GenericGenerator(name = "sequence_crspr_id", strategy = "com.ipc.userservice.util.generateid.CoursePriceIdGenerator")
+    @GeneratedValue(generator = "sequence_crspr_id")
     @Column(name = "crsprid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer coursePriceId;
 
     @Column(name = "subjectname")

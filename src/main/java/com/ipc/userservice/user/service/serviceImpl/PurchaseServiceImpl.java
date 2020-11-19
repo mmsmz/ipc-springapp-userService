@@ -1,4 +1,4 @@
-package com.ipc.userservice.user.service.ServiceImpl;
+package com.ipc.userservice.user.service.serviceImpl;
 
 import com.ipc.userservice.user.repository.PurchaseRepository;
 import com.ipc.userservice.user.controller.PurchaseController;

@@ -9,7 +9,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
 
     @Column(name = "firstname")
