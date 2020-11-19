@@ -1,4 +1,4 @@
-package com.ipc.userservice.user.Service;
+package com.ipc.userservice.user.service;
 
 import org.springframework.stereotype.Service;
 

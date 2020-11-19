@@ -1,6 +1,6 @@
-package com.ipc.userservice.user.Service;
+package com.ipc.userservice.user.service;
 
-import com.ipc.userservice.user.Dto.StudentPurchaseDto;
+import com.ipc.userservice.user.dto.StudentPurchaseDto;
 import org.springframework.stereotype.Service;
 
 @Service

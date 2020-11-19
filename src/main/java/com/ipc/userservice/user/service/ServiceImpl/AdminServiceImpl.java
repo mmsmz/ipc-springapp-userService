@@ -1,10 +1,9 @@
-package com.ipc.userservice.user.Service.ServiceImpl;
+package com.ipc.userservice.user.service.ServiceImpl;
 
-import com.ipc.userservice.user.Controller.AdminController;
-import com.ipc.userservice.user.Service.AdminService;
+import com.ipc.userservice.user.controller.AdminController;
+import com.ipc.userservice.user.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 @Service

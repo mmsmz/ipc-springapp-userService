@@ -1,4 +1,4 @@
-package com.ipc.userservice.user.Dto;
+package com.ipc.userservice.user.dto;
 
 public class ApprovalStatusDto {
 

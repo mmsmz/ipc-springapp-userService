@@ -1,15 +1,14 @@
-package com.ipc.userservice.user.Service.ServiceImpl;
+package com.ipc.userservice.user.service.ServiceImpl;
 
-import com.ipc.userservice.user.Repository.PurchaseRepository;
-import com.ipc.userservice.user.Controller.PurchaseController;
-import com.ipc.userservice.user.Dto.StudentPurchaseDto;
-import com.ipc.userservice.user.Entity.StudentPurchaseEntity;
-import com.ipc.userservice.user.Service.PurchaseService;
-import com.ipc.userservice.user.Util.CommonConstant;
+import com.ipc.userservice.user.repository.PurchaseRepository;
+import com.ipc.userservice.user.controller.PurchaseController;
+import com.ipc.userservice.user.dto.StudentPurchaseDto;
+import com.ipc.userservice.user.entity.StudentPurchaseEntity;
+import com.ipc.userservice.user.service.PurchaseService;
+import com.ipc.userservice.user.util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

@@ -1,9 +1,9 @@
-package com.ipc.userservice.user.Controller;
+package com.ipc.userservice.user.controller;
 
-import com.ipc.userservice.user.Dto.ResponseDto;
-import com.ipc.userservice.user.Dto.StudentPurchaseDto;
-import com.ipc.userservice.user.Service.PurchaseService;
-import com.ipc.userservice.user.Util.CommonConstant;
+import com.ipc.userservice.user.dto.ResponseDto;
+import com.ipc.userservice.user.dto.StudentPurchaseDto;
+import com.ipc.userservice.user.service.PurchaseService;
+import com.ipc.userservice.user.util.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

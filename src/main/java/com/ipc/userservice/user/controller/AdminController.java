@@ -1,8 +1,8 @@
-package com.ipc.userservice.user.Controller;
+package com.ipc.userservice.user.controller;
 
-import com.ipc.userservice.user.Dto.ResponseDto;
-import com.ipc.userservice.user.Dto.UserDto;
-import com.ipc.userservice.user.Service.AdminService;
+import com.ipc.userservice.user.dto.ResponseDto;
+import com.ipc.userservice.user.dto.UserDto;
+import com.ipc.userservice.user.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

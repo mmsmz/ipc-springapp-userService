@@ -1,4 +1,4 @@
-package com.ipc.userservice.user.Util;
+package com.ipc.userservice.user.util;
 
 public class CommonConstant {
 

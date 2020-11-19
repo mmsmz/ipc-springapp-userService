@@ -1,48 +1,25 @@
-package com.ipc.userservice.user.Entity;
+package com.ipc.userservice.user.dto;
 
-import javax.persistence.*;
 import java.time.Instant;
 
-@Entity
-@Table(name = "studentpurchase")
-public class StudentPurchaseEntity {
+public class StudentPurchaseDto {
 
-    @Id
-    @Column(name = "studpurid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentPurchaseId;
-
-    @Column(name = "userid")
     private Integer userId;
 
-    @Column(name = "crsprid")
     private Integer coursePriceId;
 
-    @Column(name = "crsschedid")
     private Integer courseScheduleId;
 
-    @Column(name = "paymenttype")
     private String paymentType;
 
-    @Column(name = "receiptimagelocation")
     private String receiptImageLocation;
 
-    @Column(name = "amountdeposited")
     private double amountDeposited;
 
-    @Column(name = "difftypeofbank")
     private String diffTypeOfBank;
 
-    @Column(name = "date")
     private Instant date;
 
-    public Integer getStudentPurchaseId() {
-        return studentPurchaseId;
-    }
-
-    public void setStudentPurchaseId(Integer studentPurchaseId) {
-        this.studentPurchaseId = studentPurchaseId;
-    }
 
     public Integer getUserId() {
         return userId;
