@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PurchaseRepository extends JpaRepository<StudentPurchaseEntity, Long> {
+public interface PurchaseRepository extends JpaRepository<StudentPurchaseEntity, String> {
 
-    List<StudentPurchaseEntity> findByUserId(Integer userId);
-    List<CoursePriceEntity> findByCoursePriceId(Integer coursePriceId);
-    List<CourseScheduleEntity> findByCourseScheduleId(Integer courseScheduleId);
+    List<StudentPurchaseEntity> findByUserId(String userId);
+    List<CoursePriceEntity> findByCoursePriceId(String coursePriceId);
+    List<CourseScheduleEntity> findByCourseScheduleId(String courseScheduleId);
 
 }
 

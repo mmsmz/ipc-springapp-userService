@@ -4,11 +4,11 @@ import java.time.Instant;
 
 public class StudentPurchaseDto {
 
-    private Integer userId;
+    private String userId;
 
-    private Integer coursePriceId;
+    private String coursePriceId;
 
-    private Integer courseScheduleId;
+    private String courseScheduleId;
 
     private String paymentType;
 
@@ -21,27 +21,27 @@ public class StudentPurchaseDto {
     private Instant date;
 
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public Integer getCoursePriceId() {
+    public String getCoursePriceId() {
         return coursePriceId;
     }
 
-    public void setCoursePriceId(Integer coursePriceId) {
+    public void setCoursePriceId(String coursePriceId) {
         this.coursePriceId = coursePriceId;
     }
 
-    public Integer getCourseScheduleId() {
+    public String getCourseScheduleId() {
         return courseScheduleId;
     }
 
-    public void setCourseScheduleId(Integer courseScheduleId) {
+    public void setCourseScheduleId(String courseScheduleId) {
         this.courseScheduleId = courseScheduleId;
     }
 

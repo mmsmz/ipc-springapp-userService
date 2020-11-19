@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -8,18 +10,19 @@ import java.time.Instant;
 public class StudentPurchaseEntity {
 
     @Id
+    @GenericGenerator(name = "sequence_studpurid_id", strategy = "com.ipc.userservice.user.util.generateid.StudentPurchaseIdGenerator")
+    @GeneratedValue(generator = "sequence_studpurid_id")
     @Column(name = "studpurid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentPurchaseId;
+    private String studentPurchaseId;
 
     @Column(name = "userid")
-    private Integer userId;
+    private String userId;
 
     @Column(name = "crsprid")
-    private Integer coursePriceId;
+    private String coursePriceId;
 
     @Column(name = "crsschedid")
-    private Integer courseScheduleId;
+    private String courseScheduleId;
 
     @Column(name = "paymenttype")
     private String paymentType;
@@ -36,35 +39,35 @@ public class StudentPurchaseEntity {
     @Column(name = "date")
     private Instant date;
 
-    public Integer getStudentPurchaseId() {
+    public String getStudentPurchaseId() {
         return studentPurchaseId;
     }
 
-    public void setStudentPurchaseId(Integer studentPurchaseId) {
+    public void setStudentPurchaseId(String studentPurchaseId) {
         this.studentPurchaseId = studentPurchaseId;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public Integer getCoursePriceId() {
+    public String getCoursePriceId() {
         return coursePriceId;
     }
 
-    public void setCoursePriceId(Integer coursePriceId) {
+    public void setCoursePriceId(String coursePriceId) {
         this.coursePriceId = coursePriceId;
     }
 
-    public Integer getCourseScheduleId() {
+    public String getCourseScheduleId() {
         return courseScheduleId;
     }
 
-    public void setCourseScheduleId(Integer courseScheduleId) {
+    public void setCourseScheduleId(String courseScheduleId) {
         this.courseScheduleId = courseScheduleId;
     }
 

@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,12 +9,13 @@ import javax.persistence.*;
 public class ApprovalStatus {
 
     @Id
+    @GenericGenerator(name = "sequence_apvlstatid_id", strategy = "com.ipc.userservice.user.util.generateid.ApprovalStatusIdGenerator")
+    @GeneratedValue(generator = "sequence_apvlstatid_id")
     @Column(name = "apvlstatid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer approvalStatusId;
+    private String approvalStatusId;
     
     @Column(name = "studpurid")
-    private Integer studentPurchaseID;
+    private String studentPurchaseID;
 
     @Column(name = "approvalstatus")
     private String approvalStatus;
@@ -23,19 +26,19 @@ public class ApprovalStatus {
     @Column(name = "comments")
     private String comments;
 
-    public Integer getApprovalStatusId() {
+    public String getApprovalStatusId() {
         return approvalStatusId;
     }
 
-    public void setApprovalStatusId(Integer approvalStatusId) {
+    public void setApprovalStatusId(String approvalStatusId) {
         this.approvalStatusId = approvalStatusId;
     }
 
-    public Integer getStudentPurchaseID() {
+    public String getStudentPurchaseID() {
         return studentPurchaseID;
     }
 
-    public void setStudentPurchaseID(Integer studentPurchaseID) {
+    public void setStudentPurchaseID(String studentPurchaseID) {
         this.studentPurchaseID = studentPurchaseID;
     }
 

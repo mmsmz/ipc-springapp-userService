@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +9,10 @@ import javax.persistence.*;
 public class CourseScheduleEntity {
 
     @Id
+    @GenericGenerator(name = "sequence_crsschedid_id", strategy = "com.ipc.userservice.user.util.generateid.CourseScheduleIdGenerator")
+    @GeneratedValue(generator = "sequence_crsschedid_id")
     @Column(name = "crsschedid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer courseScheduleId;
+    private String courseScheduleId;
 
     @Column(name = "crsprid")
     private String subjectName;
@@ -20,11 +23,11 @@ public class CourseScheduleEntity {
     @Column(name = "time")
     private String time;
 
-    public Integer getCourseScheduleId() {
+    public String getCourseScheduleId() {
         return courseScheduleId;
     }
 
-    public void setCourseScheduleId(Integer courseScheduleId) {
+    public void setCourseScheduleId(String courseScheduleId) {
         this.courseScheduleId = courseScheduleId;
     }
 

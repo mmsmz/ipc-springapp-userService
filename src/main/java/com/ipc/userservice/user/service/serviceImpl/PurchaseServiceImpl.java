@@ -53,8 +53,23 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     /* To Remove Course Records From Summary */
     @Override
-    public String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurchaseDto) {
-        return null;
+    public String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto) {
+        try {
+            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+            studentPurEntity.setUserId(studentPurDto.getUserId());
+            studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
+            studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
+            studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
+            studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+            studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
+            studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+            studentPurEntity.setDate(Instant.now());
+            purchaseRepository.deleteById(studentPurDto.getUserId());
+            return CommonConstant.SUCCESSFULLY_REGISTERED;
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            return e.getMessage();
+        }
     }
 
     /* To Get Purchased Course Details To Summary Table */
@@ -105,7 +120,7 @@ public class PurchaseServiceImpl implements PurchaseService {
             coursePriceEntity.setSubjectName(coursePriceDto.getSubjectName());
             coursePriceEntity.setSubjectCategory(coursePriceDto.getSubjectCategory());
             coursePriceEntity.setPrice(coursePriceDto.getPrice());
-           // purchaseRepository.findAllById(coursePriceDto);
+            purchaseRepository.findAll();
             return CommonConstant.SUCCESSFULLY_REGISTERED;
         } catch (Exception e) {
             logger.info(e.getMessage());
