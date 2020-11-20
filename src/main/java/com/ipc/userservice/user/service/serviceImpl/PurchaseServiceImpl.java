@@ -1,19 +1,23 @@
 package com.ipc.userservice.user.service.serviceImpl;
 
 import com.ipc.userservice.user.dto.CoursePriceDto;
+import com.ipc.userservice.user.dto.Subjects;
 import com.ipc.userservice.user.entity.CoursePriceEntity;
+import com.ipc.userservice.user.repository.CoursePriceRepository;
 import com.ipc.userservice.user.repository.PurchaseRepository;
 import com.ipc.userservice.user.controller.PurchaseController;
 import com.ipc.userservice.user.dto.StudentPurchaseDto;
 import com.ipc.userservice.user.entity.StudentPurchaseEntity;
 import com.ipc.userservice.user.service.PurchaseService;
 import com.ipc.userservice.user.util.CommonConstant;
+import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,10 +32,13 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     PurchaseRepository purchaseRepository;
 
+    @Autowired
+    CoursePriceRepository coursePriceRepository;
+
 
     /* To Get All Menu Options To Page */
     @Override
-    public String getAllMenuOptionsToPage() {
+    public List<Subjects> getAllMenuOptionsToPage() {
 
         /* subject type, subject category. price from coursePrice Table
             - Subject Type - Economic or Business
@@ -42,16 +49,21 @@ public class PurchaseServiceImpl implements PurchaseService {
             - class DateTime Menu - show wednesday + startTime to EndTime
         */
         try {
-            CoursePriceDto coursePriceDto = new CoursePriceDto();
-            CoursePriceEntity coursePriceEntity = new CoursePriceEntity();
-            coursePriceEntity.setSubjectName(coursePriceDto.getSubjectName());
-            coursePriceEntity.setSubjectCategory(coursePriceDto.getSubjectCategory());
-            coursePriceEntity.setPrice(coursePriceDto.getPrice());
-            purchaseRepository.findAll();
-            return CommonConstant.SUCCESSFULLY;
+            List<CoursePriceEntity> courseEntityList = new ArrayList<>();
+            courseEntityList = coursePriceRepository.findAll();
+
+            List<Subjects> subjectsList = new ArrayList<>();
+
+            for (CoursePriceEntity cpEntity: courseEntityList) {
+                
+                // coursePriceDtos.add(new CoursePriceDto(cpEntity.getSubjectName(), cpEntity.getSubjectCategory(), cpEntity.getPrice()));
+            }
+
+            return subjectsList;
         } catch (Exception e) {
             logger.info(e.getMessage());
-            return e.getMessage();
+           // return e.getMessage();
+            return null;
         }
     }
 

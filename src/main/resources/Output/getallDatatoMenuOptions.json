@@ -10,14 +10,7 @@
             {
               "subjectCategory" : "2021 Rev",
               "price" : "2000",
-              "schedule" : [
-                {
-                  "dateTime" : "Saturday 1:00PM to 3:00PM"
-                },
-                {
-                  "dateTime" : "Wednesday 12:00PM to 2:00PM"
-                }
-              ]
+              "schedule" : ["Saturday 1:00PM to 3:00PM","Wednesday 12:00PM to 2:00PM"]
             },
             {
               "subjectCategory" : "2021 Theory",

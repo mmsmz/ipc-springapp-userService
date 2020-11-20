@@ -5,6 +5,15 @@ public class CoursePriceDto {
     private String subjectName;
     private String subjectCategory;
     private double price;
+    public CoursePriceDto(){
+
+    }
+
+    public CoursePriceDto(String subjectName, String subjectCategory, double price) {
+        this.subjectName = subjectName;
+        this.subjectCategory = subjectCategory;
+        this.price = price;
+    }
 
     @Override
     public String toString() {
