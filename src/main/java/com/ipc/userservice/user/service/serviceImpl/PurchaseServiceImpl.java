@@ -10,7 +10,6 @@ import com.ipc.userservice.user.dto.StudentPurchaseDto;
 import com.ipc.userservice.user.entity.StudentPurchaseEntity;
 import com.ipc.userservice.user.service.PurchaseService;
 import com.ipc.userservice.user.util.CommonConstant;
-import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
