@@ -1,35 +1,43 @@
 package com.ipc.userservice.user.dto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SubjectCategory {
 
-    private String subjectCategory;
-    private double price;
-    private ArrayList<String> schedule;
+	public SubjectCategory() {
+	}
 
-    public ArrayList<String> getSchedule() {
-        return schedule;
-    }
+	public SubjectCategory(String subjectCategory, double price, ArrayList<String> schedule) {
+		this.subjectCategory = subjectCategory;
+		this.price = price;
+		this.schedule = schedule;
+	}
 
-    public void setSchedule(ArrayList<String> schedule) {
-        this.schedule = schedule;
-    }
+	private String subjectCategory;
+	private double price;
+	private ArrayList<String> schedule;
 
-    public String getSubjectCategory() {
-        return subjectCategory;
-    }
+	public ArrayList<String> getSchedule() {
+		return schedule;
+	}
 
-    public void setSubjectCategory(String subjectCategory) {
-        this.subjectCategory = subjectCategory;
-    }
+	public void setSchedule(ArrayList<String> schedule) {
+		this.schedule = schedule;
+	}
 
-    public double getPrice() {
-        return price;
-    }
+	public String getSubjectCategory() {
+		return subjectCategory;
+	}
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+	public void setSubjectCategory(String subjectCategory) {
+		this.subjectCategory = subjectCategory;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

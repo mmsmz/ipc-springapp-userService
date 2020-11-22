@@ -15,9 +15,9 @@ public class CourseScheduleEntity {
     private String courseScheduleId;
 
     @Column(name = "crsprid")
-    private String subjectName;
+    private String crsprid;
 
-    @Column(name = "day")
+	@Column(name = "day")
     private String day;
 
     @Column(name = "time")
@@ -29,14 +29,6 @@ public class CourseScheduleEntity {
 
     public void setCourseScheduleId(String courseScheduleId) {
         this.courseScheduleId = courseScheduleId;
-    }
-
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
     }
 
     public String getDay() {
@@ -54,4 +46,13 @@ public class CourseScheduleEntity {
     public void setTime(String time) {
         this.time = time;
     }
+    
+    public String getCrsprid() {
+		return crsprid;
+	}
+
+	public void setCrsprid(String crsprid) {
+		this.crsprid = crsprid;
+	}
+
 }
