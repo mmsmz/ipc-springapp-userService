@@ -69,15 +69,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 						continue cpEntity;
 					}
 				}
-				if (subjectsList.isEmpty()) {
-					subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<SubjectCategory>()));
-					subjectsList.get(0).getSubjectCategories().add(
-							new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), new ArrayList<>()));
-					for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
-						subjectsList.get(0).getSubjectCategories().get(0).getSchedule()
-								.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
-					}
-					continue;
+				subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<SubjectCategory>()));
+				subjectsList.get(0).getSubjectCategories().add(
+						new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), new ArrayList<>()));
+				for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
+					subjectsList.get(0).getSubjectCategories().get(0).getSchedule()
+							.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
 				}
 			}
 			return subjectsList;
