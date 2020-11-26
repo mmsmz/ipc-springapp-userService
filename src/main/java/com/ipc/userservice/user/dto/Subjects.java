@@ -6,7 +6,7 @@ public class Subjects {
 	private String subjectName;
 	private ArrayList<SubjectCategory> subjectCategories;
 
-	Subjects() {
+	public Subjects() {
 
 	}
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("PurchaseController")
+@RequestMapping("/PurchaseController")
 public class PurchaseController {
 
     /**
@@ -25,7 +25,7 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     /* To Get All Menu Options To Page
-     *  getting the following data from CoursePrice and CourseSchedule Tables
+     * getting the following data from CoursePrice and CourseSchedule Tables
      *
      * */
     @GetMapping(value = "/getAllMenuOptionsToPage", produces = "application/json")
