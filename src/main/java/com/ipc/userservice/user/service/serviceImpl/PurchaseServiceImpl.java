@@ -47,16 +47,24 @@ public class PurchaseServiceImpl implements PurchaseService {
 			List<CoursePriceEntity> courseEntityList = coursePriceRepository.findAll();
 
 			List<Subjects> subjectsList = new ArrayList<>();
+
 			cpEntity: for (CoursePriceEntity cpEntity : courseEntityList) {
+
 				List<CourseScheduleEntity> courseScheduleEntitylist = courseScheduleRepository
 						.findByCrsprid(cpEntity.getCoursePriceId());
+
 				for (Subjects subjects : subjectsList) {
 					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
-						subjects.getSubjectCategories().add(new SubjectCategory(cpEntity.getSubjectCategory(),
-								cpEntity.getPrice(), new ArrayList<>()));
+
+						ArrayList<String> shedule = new ArrayList<String>();
+
+						subjects.getSubjectCategories()
+								.add(new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), shedule));
+
 						for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
-							subjects.getSubjectCategories().get(0).getSchedule()
-									.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
+
+							shedule.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
+
 						}
 						continue cpEntity;
 					}
