@@ -52,10 +52,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 				List<CourseScheduleEntity> courseScheduleEntitylist = courseScheduleRepository
 						.findByCrsprid(cpEntity.getCoursePriceId());
-
+				boolean flag = false;
 				for (Subjects subjects : subjectsList) {
 					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
-
+						flag = true;
 						ArrayList<String> shedule = new ArrayList<String>();
 
 						subjects.getSubjectCategories()
@@ -70,10 +70,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 					}
 				}
 				subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<SubjectCategory>()));
-				subjectsList.get(0).getSubjectCategories().add(
+				subjectsList.get(subjectsList.size() - 1).getSubjectCategories().add(
 						new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), new ArrayList<>()));
 				for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
-					subjectsList.get(0).getSubjectCategories().get(0).getSchedule()
+					subjectsList.get(subjectsList.size() - 1).getSubjectCategories().get(0).getSchedule()
 							.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
 				}
 			}
