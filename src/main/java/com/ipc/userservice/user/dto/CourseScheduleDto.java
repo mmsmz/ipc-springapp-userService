@@ -12,6 +12,16 @@ public class CourseScheduleDto {
     private String meetingId;
     private String lecturerName;
 
+    public CourseScheduleDto(String courseScheduleId, String coursePriceId, String day, String time, String passCode, String meetingId, String lecturerName) {
+        this.courseScheduleId = courseScheduleId;
+        this.coursePriceId = coursePriceId;
+        this.day = day;
+        this.time = time;
+        this.passCode = passCode;
+        this.meetingId = meetingId;
+        this.lecturerName = lecturerName;
+    }
+
     @Override
     public String toString() {
         return "CourseScheduleDto{" +

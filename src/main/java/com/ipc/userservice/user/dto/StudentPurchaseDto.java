@@ -15,6 +15,14 @@ public class StudentPurchaseDto {
 
     private String approvalStatusId;
 
+    public StudentPurchaseDto(String studentPurchaseId, String userId, String coursePriceId, String courseScheduleId, String approvalStatusId) {
+        this.studentPurchaseId = studentPurchaseId;
+        this.userId = userId;
+        this.coursePriceId = coursePriceId;
+        this.courseScheduleId = courseScheduleId;
+        this.approvalStatusId = approvalStatusId;
+    }
+
     @Override
     public String toString() {
         return "StudentPurchaseDto{" +

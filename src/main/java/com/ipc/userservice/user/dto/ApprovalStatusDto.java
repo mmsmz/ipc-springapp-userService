@@ -11,6 +11,16 @@ public class ApprovalStatusDto {
     private String approvalStatus;
     private String comments;
 
+    public ApprovalStatusDto(String approvalStatusId, String studentPurchaseId, String paymentType, String receiptImgLocation, double amountDeposited, String depositedBank, String approvalStatus, String comments) {
+        this.approvalStatusId = approvalStatusId;
+        this.studentPurchaseId = studentPurchaseId;
+        this.paymentType = paymentType;
+        this.receiptImgLocation = receiptImgLocation;
+        this.amountDeposited = amountDeposited;
+        this.depositedBank = depositedBank;
+        this.approvalStatus = approvalStatus;
+        this.comments = comments;
+    }
 
     public String getApprovalStatusId() {
         return approvalStatusId;
