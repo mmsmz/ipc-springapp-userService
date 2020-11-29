@@ -94,11 +94,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 			studentPurEntity.setUserId(studentPurDto.getUserId());
 			studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
 			studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-			studentPurEntity.setDate(Instant.now());
+			studentPurEntity.setApprovalStatusId(studentPurDto.getApprovalStatusId());
+//			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
+//			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+//			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
+//			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+//			studentPurEntity.setDate(Instant.now());
 			purchaseRepository.save(studentPurEntity);
 			return CommonConstant.SUCCESSFULLY;
 		} catch (Exception e) {
@@ -115,11 +116,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 			studentPurEntity.setUserId(studentPurDto.getUserId());
 			studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
 			studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-			studentPurEntity.setDate(Instant.now());
+//			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
+//			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+//			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
+//			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+//			studentPurEntity.setDate(Instant.now());
 			purchaseRepository.deleteById(studentPurDto.getUserId());
 			return CommonConstant.SUCCESSFULLY;
 		} catch (Exception e) {
@@ -136,14 +137,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 			List<StudentPurchaseEntity> checkUserId = purchaseRepository.findByUserId(studentPurDto.getUserId());
 			if (checkUserId.isEmpty()) {
 				StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+				studentPurEntity.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
 				studentPurEntity.setUserId(studentPurDto.getUserId());
 				studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
 				studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-				studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-				studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-				studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-				studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-				studentPurEntity.setDate(Instant.now());
+				studentPurEntity.setApprovalStatusId(studentPurDto.getApprovalStatusId());
+//				studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
+//				studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+//				studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
+//				studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+//				studentPurEntity.setDate(Instant.now());
 				// purchaseRepository.findAllById(studentPurDto.getUserId());
 				return CommonConstant.SUCCESSFULLY;
 			} else {
@@ -165,14 +168,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 			StudentPurchaseEntity existingStudentPurchase = purchaseRepository.findById(studentPurDto.getUserId())
 					.orElse(null);
 
+	//		existingStudentPurchase.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
 			existingStudentPurchase.setUserId(studentPurDto.getUserId());
 			existingStudentPurchase.setCoursePriceId(studentPurDto.getCoursePriceId());
 			existingStudentPurchase.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-			existingStudentPurchase.setPaymentType(studentPurDto.getPaymentType());
-			existingStudentPurchase.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-			existingStudentPurchase.setAmountDeposited(studentPurDto.getAmountDeposited());
-			existingStudentPurchase.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-			existingStudentPurchase.setDate(Instant.now());
+			existingStudentPurchase.setApprovalStatusId(studentPurDto.getApprovalStatusId());
+//			existingStudentPurchase.setPaymentType(studentPurDto.getPaymentType());
+//			existingStudentPurchase.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+//			existingStudentPurchase.setAmountDeposited(studentPurDto.getAmountDeposited());
+//			existingStudentPurchase.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+//			existingStudentPurchase.setDate(Instant.now());
 			purchaseRepository.save(existingStudentPurchase);
 			logger.info("Updated {}", CommonConstant.SUCCESSFULLY);
 		} catch (Exception e) {
