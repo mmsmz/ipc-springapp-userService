@@ -23,12 +23,30 @@ public class CourseScheduleEntity {
     @Column(name = "time")
     private String time;
 
+    @Column(name = "passcode")
+    private String passCode;
+
+    @Column(name = "meetingid")
+    private String meetingId;
+
+    @Column(name = "lecturername")
+    private String 	lecturerName;
+
+
     public String getCourseScheduleId() {
         return courseScheduleId;
     }
 
     public void setCourseScheduleId(String courseScheduleId) {
         this.courseScheduleId = courseScheduleId;
+    }
+
+    public String getCrsprid() {
+        return crsprid;
+    }
+
+    public void setCrsprid(String crsprid) {
+        this.crsprid = crsprid;
     }
 
     public String getDay() {
@@ -46,13 +64,28 @@ public class CourseScheduleEntity {
     public void setTime(String time) {
         this.time = time;
     }
-    
-    public String getCrsprid() {
-		return crsprid;
-	}
 
-	public void setCrsprid(String crsprid) {
-		this.crsprid = crsprid;
-	}
+    public String getPassCode() {
+        return passCode;
+    }
 
+    public void setPassCode(String passCode) {
+        this.passCode = passCode;
+    }
+
+    public String getMeetingId() {
+        return meetingId;
+    }
+
+    public void setMeetingId(String meetingId) {
+        this.meetingId = meetingId;
+    }
+
+    public String getLecturerName() {
+        return lecturerName;
+    }
+
+    public void setLecturerName(String lecturerName) {
+        this.lecturerName = lecturerName;
+    }
 }

@@ -2,6 +2,7 @@ package com.ipc.userservice.user.dto;
 
 public class UserDto {
 
+    private String userId;
     private String firstName;
     private String lastName;
     private String nicNr;
@@ -11,6 +12,14 @@ public class UserDto {
     private String deliveryaddress;
     private String password;
     private byte loginStatus;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;

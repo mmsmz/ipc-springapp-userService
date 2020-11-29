@@ -1,8 +1,11 @@
 package com.ipc.userservice.user.dto;
 
+import javax.persistence.Column;
 import java.time.Instant;
 
 public class StudentPurchaseDto {
+
+    private String studentPurchaseId;
 
     private String userId;
 
@@ -10,16 +13,26 @@ public class StudentPurchaseDto {
 
     private String courseScheduleId;
 
-    private String paymentType;
+    private String approvalStatusId;
 
-    private String receiptImageLocation;
+    @Override
+    public String toString() {
+        return "StudentPurchaseDto{" +
+                "studentPurchaseId='" + studentPurchaseId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", coursePriceId='" + coursePriceId + '\'' +
+                ", courseScheduleId='" + courseScheduleId + '\'' +
+                ", approvalStatusId='" + approvalStatusId + '\'' +
+                '}';
+    }
 
-    private double amountDeposited;
+    public String getStudentPurchaseId() {
+        return studentPurchaseId;
+    }
 
-    private String diffTypeOfBank;
-
-    private Instant date;
-
+    public void setStudentPurchaseId(String studentPurchaseId) {
+        this.studentPurchaseId = studentPurchaseId;
+    }
 
     public String getUserId() {
         return userId;
@@ -45,43 +58,11 @@ public class StudentPurchaseDto {
         this.courseScheduleId = courseScheduleId;
     }
 
-    public String getPaymentType() {
-        return paymentType;
+    public String getApprovalStatusId() {
+        return approvalStatusId;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    public String getReceiptImageLocation() {
-        return receiptImageLocation;
-    }
-
-    public void setReceiptImageLocation(String receiptImageLocation) {
-        this.receiptImageLocation = receiptImageLocation;
-    }
-
-    public double getAmountDeposited() {
-        return amountDeposited;
-    }
-
-    public void setAmountDeposited(double amountDeposited) {
-        this.amountDeposited = amountDeposited;
-    }
-
-    public String getDiffTypeOfBank() {
-        return diffTypeOfBank;
-    }
-
-    public void setDiffTypeOfBank(String diffTypeOfBank) {
-        this.diffTypeOfBank = diffTypeOfBank;
-    }
-
-    public Instant getDate() {
-        return date;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
+    public void setApprovalStatusId(String approvalStatusId) {
+        this.approvalStatusId = approvalStatusId;
     }
 }

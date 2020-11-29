@@ -3,6 +3,7 @@ package com.ipc.userservice.user.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table(name = "approvalstatus")
@@ -17,14 +18,27 @@ public class ApprovalStatus {
     @Column(name = "studpurid")
     private String studentPurchaseID;
 
+    @Column(name = "paymenttype")
+    private String paymentType;
+
+    @Column(name = "receiptimagelocation")
+    private String receiptImageLocation;
+
+    @Column(name = "amountdeposited")
+    private double amountDeposited;
+
+    @Column(name = "depositedbank")
+    private String depositedBank;
+
     @Column(name = "approvalstatus")
     private String approvalStatus;
 
-    @Column(name = "passcode")
-    private String passcode;
-
     @Column(name = "comments")
     private String comments;
+
+    @Column(name = "date")
+    private Instant date; // only date
+
 
     public String getApprovalStatusId() {
         return approvalStatusId;
@@ -42,20 +56,44 @@ public class ApprovalStatus {
         this.studentPurchaseID = studentPurchaseID;
     }
 
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public String getReceiptImageLocation() {
+        return receiptImageLocation;
+    }
+
+    public void setReceiptImageLocation(String receiptImageLocation) {
+        this.receiptImageLocation = receiptImageLocation;
+    }
+
+    public double getAmountDeposited() {
+        return amountDeposited;
+    }
+
+    public void setAmountDeposited(double amountDeposited) {
+        this.amountDeposited = amountDeposited;
+    }
+
+    public String getDepositedBank() {
+        return depositedBank;
+    }
+
+    public void setDepositedBank(String depositedBank) {
+        this.depositedBank = depositedBank;
+    }
+
     public String getApprovalStatus() {
         return approvalStatus;
     }
 
     public void setApprovalStatus(String approvalStatus) {
         this.approvalStatus = approvalStatus;
-    }
-
-    public String getPasscode() {
-        return passcode;
-    }
-
-    public void setPasscode(String passcode) {
-        this.passcode = passcode;
     }
 
     public String getComments() {
@@ -65,4 +103,13 @@ public class ApprovalStatus {
     public void setComments(String comments) {
         this.comments = comments;
     }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
+    }
+
 }

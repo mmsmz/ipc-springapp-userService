@@ -1,25 +1,43 @@
 package com.ipc.userservice.user.dto;
 
+import javax.persistence.Column;
+
 public class CourseScheduleDto {
 
-    private Integer coursePriceId;
+    private String courseScheduleId;
+    private String coursePriceId;
     private String day;
     private String time;
+    private String passCode;
+    private String meetingId;
+    private String lecturerName;
 
     @Override
     public String toString() {
         return "CourseScheduleDto{" +
-                "coursePriceId=" + coursePriceId +
+                "courseScheduleId='" + courseScheduleId + '\'' +
+                ", coursePriceId='" + coursePriceId + '\'' +
                 ", day='" + day + '\'' +
                 ", time='" + time + '\'' +
+                ", passCode='" + passCode + '\'' +
+                ", meetingId='" + meetingId + '\'' +
+                ", lecturerName='" + lecturerName + '\'' +
                 '}';
     }
 
-    public Integer getCoursePriceId() {
+    public String getCourseScheduleId() {
+        return courseScheduleId;
+    }
+
+    public void setCourseScheduleId(String courseScheduleId) {
+        this.courseScheduleId = courseScheduleId;
+    }
+
+    public String getCoursePriceId() {
         return coursePriceId;
     }
 
-    public void setCoursePriceId(Integer coursePriceId) {
+    public void setCoursePriceId(String coursePriceId) {
         this.coursePriceId = coursePriceId;
     }
 
@@ -39,4 +57,27 @@ public class CourseScheduleDto {
         this.time = time;
     }
 
+    public String getPassCode() {
+        return passCode;
+    }
+
+    public void setPassCode(String passCode) {
+        this.passCode = passCode;
+    }
+
+    public String getMeetingId() {
+        return meetingId;
+    }
+
+    public void setMeetingId(String meetingId) {
+        this.meetingId = meetingId;
+    }
+
+    public String getLecturerName() {
+        return lecturerName;
+    }
+
+    public void setLecturerName(String lecturerName) {
+        this.lecturerName = lecturerName;
+    }
 }

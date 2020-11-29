@@ -9,8 +9,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userid")
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userid;
+    private String userid;
 
     @Column(name = "firstname")
     private String firstName;
@@ -39,11 +38,11 @@ public class UserEntity {
     @Column(name = "loginstatus")
     private byte loginstatus;
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
