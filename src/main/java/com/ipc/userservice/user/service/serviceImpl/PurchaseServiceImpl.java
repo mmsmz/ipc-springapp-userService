@@ -1,15 +1,12 @@
 package com.ipc.userservice.user.service.serviceImpl;
 
-import com.ipc.userservice.user.dto.CoursePriceDto;
-import com.ipc.userservice.user.dto.Subjects;
+import com.ipc.userservice.user.dto.*;
 import com.ipc.userservice.user.entity.CoursePriceEntity;
 import com.ipc.userservice.user.entity.CourseScheduleEntity;
 import com.ipc.userservice.user.repository.CoursePriceRepository;
 import com.ipc.userservice.user.repository.CourseScheduleRepository;
 import com.ipc.userservice.user.repository.PurchaseRepository;
 import com.ipc.userservice.user.controller.PurchaseController;
-import com.ipc.userservice.user.dto.StudentPurchaseDto;
-import com.ipc.userservice.user.dto.SubjectCategory;
 import com.ipc.userservice.user.entity.StudentPurchaseEntity;
 import com.ipc.userservice.user.service.PurchaseService;
 import com.ipc.userservice.user.util.CommonConstant;
@@ -87,19 +84,13 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	/* To Add Course Details To Summary */
 	@Override
-	public String addCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
+	public String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto) {
 
 		try {
 			StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-			studentPurEntity.setUserId(studentPurDto.getUserId());
-			studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
-			studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-			studentPurEntity.setApprovalStatusId(studentPurDto.getApprovalStatusId());
-//			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
-//			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-//			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
-//			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-//			studentPurEntity.setDate(Instant.now());
+			studentPurEntity.setUserId(userId);
+			studentPurEntity.setCoursePriceId(purchaseCartDto.getCoursePriceId());
+			studentPurEntity.setCourseScheduleId(purchaseCartDto.getCourseScheduleId());
 			purchaseRepository.save(studentPurEntity);
 			return CommonConstant.SUCCESSFULLY;
 		} catch (Exception e) {
@@ -113,7 +104,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto) {
 		try {
 			StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-			studentPurEntity.setUserId(studentPurDto.getUserId());
+		//	studentPurEntity.setUserId(studentPurDto.getUserId());
 			studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
 			studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
 //			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
@@ -121,7 +112,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 //			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
 //			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
 //			studentPurEntity.setDate(Instant.now());
-			purchaseRepository.deleteById(studentPurDto.getUserId());
+			//purchaseRepository.deleteById(studentPurDto.getUserId());
 			return CommonConstant.SUCCESSFULLY;
 		} catch (Exception e) {
 			logger.info(e.getMessage());
@@ -133,58 +124,57 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public String getPurchasedCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
 
-		try {
-			List<StudentPurchaseEntity> checkUserId = purchaseRepository.findByUserId(studentPurDto.getUserId());
-			if (checkUserId.isEmpty()) {
-				StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-				studentPurEntity.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
-				studentPurEntity.setUserId(studentPurDto.getUserId());
-				studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
-				studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
-				studentPurEntity.setApprovalStatusId(studentPurDto.getApprovalStatusId());
+//		try {
+//			List<StudentPurchaseEntity> checkUserId = purchaseRepository.findByUserId(studentPurDto.getUserId());
+//			if (checkUserId.isEmpty()) {
+//				StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+//				studentPurEntity.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
+//				studentPurEntity.setUserId(studentPurDto.getUserId());
+//				studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
+//				studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
+//				studentPurEntity.setApprovalStatusId(studentPurDto.getApprovalStatusId());
 //				studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
 //				studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
 //				studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
 //				studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
 //				studentPurEntity.setDate(Instant.now());
-				// purchaseRepository.findAllById(studentPurDto.getUserId());
-				return CommonConstant.SUCCESSFULLY;
-			} else {
-				logger.info(CommonConstant.ERROR);
-				return CommonConstant.ERROR;
-			}
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-			return e.getMessage();
-		}
-
+//				 purchaseRepository.findAllById(studentPurDto.getUserId());
+//				return CommonConstant.SUCCESSFULLY;
+//			} else {
+//				logger.info(CommonConstant.ERROR);
+//				return CommonConstant.ERROR;
+//			}
+//		} catch (Exception e) {
+//			logger.info(e.getMessage());
+//			return e.getMessage();
+//		}
+		return null;
 	}
 
 	/* To allow Student to confirm the purchase details */
 	@Override
 	public String confirmPurchase(StudentPurchaseDto studentPurDto) {
 		// updating the purchase
-		try {
+	/*	try {
 			StudentPurchaseEntity existingStudentPurchase = purchaseRepository.findById(studentPurDto.getUserId())
 					.orElse(null);
 
-	//		existingStudentPurchase.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
+			existingStudentPurchase.setStudentPurchaseId(studentPurDto.getStudentPurchaseId());
 			existingStudentPurchase.setUserId(studentPurDto.getUserId());
 			existingStudentPurchase.setCoursePriceId(studentPurDto.getCoursePriceId());
 			existingStudentPurchase.setCourseScheduleId(studentPurDto.getCourseScheduleId());
 			existingStudentPurchase.setApprovalStatusId(studentPurDto.getApprovalStatusId());
-//			existingStudentPurchase.setPaymentType(studentPurDto.getPaymentType());
-//			existingStudentPurchase.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
-//			existingStudentPurchase.setAmountDeposited(studentPurDto.getAmountDeposited());
-//			existingStudentPurchase.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
-//			existingStudentPurchase.setDate(Instant.now());
+			existingStudentPurchase.setPaymentType(studentPurDto.getPaymentType());
+			existingStudentPurchase.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
+			existingStudentPurchase.setAmountDeposited(studentPurDto.getAmountDeposited());
+			existingStudentPurchase.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
+			existingStudentPurchase.setDate(Instant.now());
 			purchaseRepository.save(existingStudentPurchase);
 			logger.info("Updated {}", CommonConstant.SUCCESSFULLY);
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			return e.getMessage();
-		}
+		}*/
 		return null;
 	}
-
 }

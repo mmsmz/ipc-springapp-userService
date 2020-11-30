@@ -1,5 +1,6 @@
 package com.ipc.userservice.user.controller;
 
+import com.ipc.userservice.user.dto.PurchaseCartDto;
 import com.ipc.userservice.user.dto.ResponseDto;
 import com.ipc.userservice.user.dto.StudentPurchaseDto;
 import com.ipc.userservice.user.service.PurchaseService;
@@ -44,12 +45,12 @@ public class PurchaseController {
      * the following data will be saved into the student purchase table
      * */
     @PostMapping(value = "/addCourseDetailsToSummary", produces = "application/json")
-    public ResponseEntity<ResponseDto> addCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the Add Course Details To Summary method Start" + studentPurDto.toString());
+    public ResponseEntity<ResponseDto> addCourseDetailsToSummary(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
+        logger.info("Inside the Add Course Details To Summary method Start" + "userID: " +  userId + " " +  purchaseCartDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.addCourseDetailsToSummary(studentPurDto));
+        responseDto.setData(purchaseService.addCourseDetailsToSummary(userId, purchaseCartDto));
         logger.info("Inside the Add Course Details To Summary method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
