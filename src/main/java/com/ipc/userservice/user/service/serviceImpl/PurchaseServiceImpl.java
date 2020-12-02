@@ -23,106 +23,126 @@ import java.util.List;
 //@EnableJpaRepositories("com.ipc.userservice.user.Repository")
 public class PurchaseServiceImpl implements PurchaseService {
 
-	/**
-	 * The Logger
-	 */
-	final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
+    /**
+     * The Logger
+     */
+    final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 
-	@Autowired
-	PurchaseRepository purchaseRepository;
+    @Autowired
+    PurchaseRepository purchaseRepository;
 
-	@Autowired
-	CoursePriceRepository coursePriceRepository;
+    @Autowired
+    CoursePriceRepository coursePriceRepository;
 
-	@Autowired
-	CourseScheduleRepository courseScheduleRepository;
+    @Autowired
+    CourseScheduleRepository courseScheduleRepository;
 
-	/* To Get All Menu Options To Page */
-	@Override
-	public List<Subjects> getAllMenuOptionsToPage() {
-		try {
-			List<CoursePriceEntity> courseEntityList = coursePriceRepository.findAll();
+    /* To Get All Menu Options To Page */
+//	@Override
+//	public List<Subjects> getAllMenuOptionsToPage() {
+//		try {
+//			List<CoursePriceEntity> courseEntityList = coursePriceRepository.findAll();
+//
+//			List<Subjects> subjectsList = new ArrayList<>();
+//
+//			cpEntity: for (CoursePriceEntity cpEntity : courseEntityList) {
+//
+//				List<CourseScheduleEntity> courseScheduleEntitylist = courseScheduleRepository
+//						.findByCrsprid(cpEntity.getCoursePriceId());
+//				boolean flag = false;
+//				for (Subjects subjects : subjectsList) {
+//					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
+//						flag = true;
+//						ArrayList<String> shedule = new ArrayList<String>();
+//
+//						subjects.getSubjectCategories()
+//								.add(new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), shedule));
+//
+//						for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
+//
+//							shedule.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
+//
+//						}
+//						continue cpEntity;
+//					}
+//				}
+//				subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<SubjectCategory>()));
+//				subjectsList.get(subjectsList.size() - 1).getSubjectCategories().add(
+//						new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), new ArrayList<>()));
+//				for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
+//					subjectsList.get(subjectsList.size() - 1).getSubjectCategories().get(0).getSchedule()
+//							.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
+//				}
+//			}
+//			return subjectsList;
+//		} catch (Exception e) {
+//			logger.info(e.getMessage());
+//			// return e.getMessage();
+//			return null;
+//		}
+//	}
 
-			List<Subjects> subjectsList = new ArrayList<>();
+    /* To Add Course Details To Summary */
+    @Override
+    public String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto) {
 
-			cpEntity: for (CoursePriceEntity cpEntity : courseEntityList) {
+        try {
+            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+            studentPurEntity.setUserId(userId);
+            studentPurEntity.setCoursePriceId(purchaseCartDto.getCoursePriceId());
+            studentPurEntity.setCourseScheduleId(purchaseCartDto.getCourseScheduleId());
+            purchaseRepository.save(studentPurEntity);
+            return CommonConstant.SUCCESSFULLY;
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            return e.getMessage();
+        }
+    }
 
-				List<CourseScheduleEntity> courseScheduleEntitylist = courseScheduleRepository
-						.findByCrsprid(cpEntity.getCoursePriceId());
-				boolean flag = false;
-				for (Subjects subjects : subjectsList) {
-					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
-						flag = true;
-						ArrayList<String> shedule = new ArrayList<String>();
+    @Override
+    public List<Subjects> getAddedCourseDetailsToSummary(String userId) {
 
-						subjects.getSubjectCategories()
-								.add(new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), shedule));
+        try {
+            List<StudentPurchaseEntity> studentPurchaseEntities = purchaseRepository.findAll();
 
-						for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
+            logger.info("Inside the Get Added Course Details To Summary method Start");
 
-							shedule.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
+            List<CoursePriceEntity> courseEntityList = coursePriceRepository.findAll();
 
-						}
-						continue cpEntity;
-					}
-				}
-				subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<SubjectCategory>()));
-				subjectsList.get(subjectsList.size() - 1).getSubjectCategories().add(
-						new SubjectCategory(cpEntity.getSubjectCategory(), cpEntity.getPrice(), new ArrayList<>()));
-				for (CourseScheduleEntity courseScheduleEntity : courseScheduleEntitylist) {
-					subjectsList.get(subjectsList.size() - 1).getSubjectCategories().get(0).getSchedule()
-							.add(courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime());
-				}
-			}
-			return subjectsList;
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-			// return e.getMessage();
-			return null;
-		}
-	}
+            List<Subjects> subjectsList = new ArrayList<>();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return null;
 
-	/* To Add Course Details To Summary */
-	@Override
-	public String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto) {
 
-		try {
-			StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-			studentPurEntity.setUserId(userId);
-			studentPurEntity.setCoursePriceId(purchaseCartDto.getCoursePriceId());
-			studentPurEntity.setCourseScheduleId(purchaseCartDto.getCourseScheduleId());
-			purchaseRepository.save(studentPurEntity);
-			return CommonConstant.SUCCESSFULLY;
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-			return e.getMessage();
-		}
-	}
+    }
 
-	/* To Remove Course Records From Summary */
-	@Override
-	public String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto) {
-		try {
-			StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-		//	studentPurEntity.setUserId(studentPurDto.getUserId());
-			studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
-			studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
+
+    /* To Remove Course Records From Summary */
+    @Override
+    public String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto) {
+        try {
+            StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
+            //	studentPurEntity.setUserId(studentPurDto.getUserId());
+            studentPurEntity.setCoursePriceId(studentPurDto.getCoursePriceId());
+            studentPurEntity.setCourseScheduleId(studentPurDto.getCourseScheduleId());
 //			studentPurEntity.setPaymentType(studentPurDto.getPaymentType());
 //			studentPurEntity.setReceiptImageLocation(studentPurDto.getReceiptImageLocation());
 //			studentPurEntity.setAmountDeposited(studentPurDto.getAmountDeposited());
 //			studentPurEntity.setDiffTypeOfBank(studentPurDto.getDiffTypeOfBank());
 //			studentPurEntity.setDate(Instant.now());
-			//purchaseRepository.deleteById(studentPurDto.getUserId());
-			return CommonConstant.SUCCESSFULLY;
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-			return e.getMessage();
-		}
-	}
+            //purchaseRepository.deleteById(studentPurDto.getUserId());
+            return CommonConstant.SUCCESSFULLY;
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            return e.getMessage();
+        }
+    }
 
-	/* To Get Purchased Course Details To Summary Table */
-	@Override
-	public String getPurchasedCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
+    /* To Get Purchased Course Details To Summary Table */
+    @Override
+    public String getPurchasedCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
 
 //		try {
 //			List<StudentPurchaseEntity> checkUserId = purchaseRepository.findByUserId(studentPurDto.getUserId());
@@ -148,13 +168,13 @@ public class PurchaseServiceImpl implements PurchaseService {
 //			logger.info(e.getMessage());
 //			return e.getMessage();
 //		}
-		return null;
-	}
+        return null;
+    }
 
-	/* To allow Student to confirm the purchase details */
-	@Override
-	public String confirmPurchase(StudentPurchaseDto studentPurDto) {
-		// updating the purchase
+    /* To allow Student to confirm the purchase details */
+    @Override
+    public String confirmPurchase(StudentPurchaseDto studentPurDto) {
+        // updating the purchase
 	/*	try {
 			StudentPurchaseEntity existingStudentPurchase = purchaseRepository.findById(studentPurDto.getUserId())
 					.orElse(null);
@@ -175,6 +195,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 			logger.info(e.getMessage());
 			return e.getMessage();
 		}*/
-		return null;
-	}
+        return null;
+    }
 }

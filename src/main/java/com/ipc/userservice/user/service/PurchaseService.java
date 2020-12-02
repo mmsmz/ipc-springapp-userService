@@ -12,11 +12,14 @@ import java.util.List;
 public interface PurchaseService {
 
     /* To Get All Menu Options To Purchase Cart Page */
-    List<Subjects>  getAllMenuOptionsToPage();
+//    List<Subjects>  getAllMenuOptionsToPage();
 
     /* To Add Course Details To Summary */
     String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto);
 
+    /* To Get Added Course Details To Summary */
+    List<Subjects> getAddedCourseDetailsToSummary(String userId);
+;
     /* To Remove Course Records From Summary */
     String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto);
 
@@ -25,5 +28,7 @@ public interface PurchaseService {
 
     /* To allow Student to confirm the purchase details */
     String confirmPurchase(StudentPurchaseDto studentPurchaseDto);
+
+
 
 }
