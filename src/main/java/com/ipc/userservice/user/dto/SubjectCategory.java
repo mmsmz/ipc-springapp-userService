@@ -2,26 +2,42 @@ package com.ipc.userservice.user.dto;
 
 import java.util.ArrayList;
 
+/**
+ * To get ALl Course Details API To get all subjectCategory, schedule, price
+ * based on the subjectType
+ */
 public class SubjectCategory {
 
 	public SubjectCategory() {
 	}
 
-	public SubjectCategory(String subjectCategory, double price, ArrayList<String> schedule) {
+	private String coursePriceId;
+	private String subjectCategory;
+
+	private double price;
+	private ArrayList<CourseSchedule> schedule;
+
+	public String getCoursePriceId() {
+		return coursePriceId;
+	}
+
+	public SubjectCategory(String coursePriceId, String subjectCategory, double price,
+			ArrayList<CourseSchedule> schedule) {
+		this.coursePriceId = coursePriceId;
 		this.subjectCategory = subjectCategory;
 		this.price = price;
 		this.schedule = schedule;
 	}
 
-	private String subjectCategory;
-	private double price;
-	private ArrayList<String> schedule;
+	public void setCoursePriceId(String coursePriceId) {
+		this.coursePriceId = coursePriceId;
+	}
 
-	public ArrayList<String> getSchedule() {
+	public ArrayList<CourseSchedule> getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(ArrayList<String> schedule) {
+	public void setSchedule(ArrayList<CourseSchedule> schedule) {
 		this.schedule = schedule;
 	}
 
