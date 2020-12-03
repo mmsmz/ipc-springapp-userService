@@ -39,8 +39,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     /* To Add Course Details To Summary */
     @Override
-    public String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto) {
-
+    public String addCourseToPurchaseSummary(String userId, PurchaseCartDto purchaseCartDto) {
         try {
             StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
             studentPurEntity.setUserId(userId);
@@ -61,9 +60,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 
             logger.info("Inside the Get Added Course Details To Summary method Start");
 
-            List<StudentPurchaseEntity> StudentPurchaseEntitylist = purchaseRepository.findByUserId(userId);
+            List<StudentPurchaseEntity> studentPurchaseEntitylist = purchaseRepository.findByUserId(userId);
             Purchase:
-            for (StudentPurchaseEntity student : StudentPurchaseEntitylist) {
+            for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
                 Optional<CoursePriceEntity> temp = coursePriceRepository.findById(student.getCoursePriceId());
                 CoursePriceEntity cpEntity = temp.get();
                 Optional<CourseScheduleEntity> temp2 = courseScheduleRepository.findById(student.getCourseScheduleId());
@@ -106,12 +105,6 @@ public class PurchaseServiceImpl implements PurchaseService {
             logger.info(e.getMessage());
             return e.getMessage();
         }
-        return null;
-    }
-
-    /* To Get Purchased Course Details To Summary Table */
-    @Override
-    public String getPurchasedCourseDetailsToSummary(StudentPurchaseDto studentPurDto) {
         return null;
     }
 

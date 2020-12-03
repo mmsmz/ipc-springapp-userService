@@ -30,22 +30,20 @@ public class PurchaseController {
 
 
 
-    /* To Add Course Details To Summary
+    /* To Add Course To Purchase Summary
      * the following data will be saved into the student purchase table
      * */
-    @PostMapping(value = "/addCourseDetailsToSummary", produces = "application/json")
-    public ResponseEntity<ResponseDto> addCourseDetailsToSummary(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
+    @PostMapping(value = "/addCourseToPurchaseSummary", produces = "application/json")
+    public ResponseEntity<ResponseDto> addCourseToPurchaseSummary(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
         logger.info("Inside the Add Course Details To Summary method Start" + "userID: " +  userId + " " +  purchaseCartDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.addCourseDetailsToSummary(userId, purchaseCartDto));
+        responseDto.setData(purchaseService.addCourseToPurchaseSummary(userId, purchaseCartDto));
         logger.info("Inside the Add Course Details To Summary method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
-    // getAddedCourseDetailsToSummary  requestheader userId,
-     // returns crspri ids
 
     /* To Get All Menu Options To Page
      * getting the following data from CoursePrice and CourseSchedule Tables
@@ -54,7 +52,6 @@ public class PurchaseController {
     @GetMapping(value = "/getAddedCourseDetailsToSummary", produces = "application/json")
     public ResponseEntity<ResponseDto> getAddedCourseDetailsToSummary(@RequestHeader String userId) {
         logger.info("Inside the Get Added Course Details To Summary method Start");
-
         List<Subjects> addedCourseList = purchaseService.getAddedCourseDetailsToSummary(userId);
 
         ResponseDto responseDto = new ResponseDto();
@@ -82,23 +79,6 @@ public class PurchaseController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    // getAllAddedCourseRecords
-
-    // refer the Resourse -> output -> .json
-    /* To Get Purchased Course Details To Summary Table
-    *  the following data will be retrieved from student purchase table
-    * */
-    @GetMapping(value = "/getPurchasedCourseDetailsToSummary", produces = "application/json")
-    public ResponseEntity<ResponseDto> getPurchasedCourseDetailsToSummary(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the Get Purchased Course Details To Summary method Start" + studentPurDto.toString());
-
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.getPurchasedCourseDetailsToSummary(studentPurDto));
-        logger.info("Inside the Get Purchased Course Details To Summary method End");
-
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
-    }
 
     /*  To allow Student to confirm the purchase details
      *
@@ -114,10 +94,5 @@ public class PurchaseController {
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
-
-//    @GetMapping("/admin")
-//    public String admin() {
-//        return "<h1>Hello Admin</h1>";
-//    }
 
 }
