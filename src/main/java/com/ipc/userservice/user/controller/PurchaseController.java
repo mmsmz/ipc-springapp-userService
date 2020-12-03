@@ -71,12 +71,12 @@ public class PurchaseController {
     * the following data will be removed from student purchase table
     * */
     @PostMapping(value = "/removeCourseRecordsFromSummary", produces = "application/json")
-    public ResponseEntity<ResponseDto> removeCourseRecordsFromSummary(@RequestBody StudentPurchaseDto studentPurchaseDto) {
-        logger.info("Inside the Remove Course Records From Summary method Start" + studentPurchaseDto.toString());
+    public ResponseEntity<ResponseDto> removeCourseRecordsFromSummary(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
+        logger.info("Inside the Remove Course Records From Summary method Start" + userId);
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.removeCourseRecordsFromSummary(studentPurchaseDto));
+        responseDto.setData(purchaseService.removeCourseRecordsFromSummary(userId, purchaseCartDto));
         logger.info("Inside the Remove Course Records From Summary method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);

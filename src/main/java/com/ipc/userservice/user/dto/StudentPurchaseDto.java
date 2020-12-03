@@ -7,11 +7,22 @@ public class StudentPurchaseDto {
 
     private String studentPurchaseId;
 
+    private String userId;
+
     private String coursePriceId;
 
     private String courseScheduleId;
 
     private String approvalStatusId;
+
+    public StudentPurchaseDto(){}
+
+    public StudentPurchaseDto(String studentPurchaseId, String userId, String coursePriceId, String courseScheduleId) {
+        this.studentPurchaseId = studentPurchaseId;
+        this.userId = userId;
+        this.coursePriceId = coursePriceId;
+        this.courseScheduleId = courseScheduleId;
+    }
 
     public StudentPurchaseDto(String coursePriceId, String courseScheduleId) {
         this.coursePriceId = coursePriceId;
@@ -26,6 +37,14 @@ public class StudentPurchaseDto {
                 ", courseScheduleId='" + courseScheduleId + '\'' +
                 ", approvalStatusId='" + approvalStatusId + '\'' +
                 '}';
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStudentPurchaseId() {

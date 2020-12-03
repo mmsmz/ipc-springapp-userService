@@ -11,9 +11,6 @@ import java.util.List;
 @Service
 public interface PurchaseService {
 
-    /* To Get All Menu Options To Purchase Cart Page */
-//    List<Subjects>  getAllMenuOptionsToPage();
-
     /* To Add Course Details To Summary */
     String addCourseDetailsToSummary(String userId, PurchaseCartDto purchaseCartDto);
 
@@ -21,7 +18,7 @@ public interface PurchaseService {
     List<Subjects> getAddedCourseDetailsToSummary(String userId);
 ;
     /* To Remove Course Records From Summary */
-    String removeCourseRecordsFromSummary(StudentPurchaseDto studentPurDto);
+    String removeCourseRecordsFromSummary(String userId, PurchaseCartDto purchaseCartDto);
 
     /* To Get Purchased Course Details To Summary Table */
     String getPurchasedCourseDetailsToSummary(StudentPurchaseDto studentPurDto);
