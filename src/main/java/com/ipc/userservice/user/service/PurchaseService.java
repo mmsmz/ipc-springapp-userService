@@ -1,5 +1,6 @@
 package com.ipc.userservice.user.service;
 
+import com.ipc.userservice.user.dto.ApprovalStatusDto;
 import com.ipc.userservice.user.dto.CoursePriceDto;
 import com.ipc.userservice.user.dto.PurchaseCartDto;
 import com.ipc.userservice.user.dto.StudentPurchaseDto;
@@ -21,7 +22,7 @@ public interface PurchaseService {
     String removeCourseRecordsFromSummary(String userId, PurchaseCartDto purchaseCartDto);
 
     /* To allow Student to confirm the purchase details */
-    String confirmPurchase(StudentPurchaseDto studentPurchaseDto);
+    String confirmPurchase(String userId,ApprovalStatusDto approvalStatusDto);
 
 
 

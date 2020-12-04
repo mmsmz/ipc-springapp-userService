@@ -1,5 +1,6 @@
 package com.ipc.userservice.user.controller;
 
+import com.ipc.userservice.user.dto.ApprovalStatusDto;
 import com.ipc.userservice.user.dto.PurchaseCartDto;
 import com.ipc.userservice.user.dto.ResponseDto;
 import com.ipc.userservice.user.dto.StudentPurchaseDto;
@@ -84,12 +85,12 @@ public class PurchaseController {
      *
      * */
     @PostMapping(value = "/confirmPurchase", produces = "application/json")
-    public ResponseEntity<ResponseDto> confirmPurchase(@RequestBody StudentPurchaseDto studentPurDto) {
-        logger.info("Inside the student confirm Purchase method Start" + studentPurDto.toString());
+    public ResponseEntity<ResponseDto> confirmPurchase(@RequestHeader String userId,@RequestBody ApprovalStatusDto approvalStatusDto) {
+        logger.info("Inside the student confirm Purchase method Start" + approvalStatusDto.toString());
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.confirmPurchase(studentPurDto));
+        responseDto.setData(purchaseService.confirmPurchase(userId,approvalStatusDto));
         logger.info("Inside the student confirm Purchase method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
