@@ -36,6 +36,12 @@ public class StudentPurchaseEntity {
         this.approvalStatusId = approvalStatusId;
     }
 
+    public StudentPurchaseEntity(String userId, String coursePriceId, String courseScheduleId) {
+        this.userId = userId;
+        this.coursePriceId = coursePriceId;
+        this.courseScheduleId = courseScheduleId;
+    }
+
     public String getStudentPurchaseId() {
         return studentPurchaseId;
     }

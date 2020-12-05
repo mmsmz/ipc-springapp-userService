@@ -110,7 +110,7 @@ public class PurchaseServiceImpl implements PurchaseService {
                     purchaseCartDto.getCoursePriceId(), purchaseCartDto.getCourseScheduleId(), null);
 
             for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
-				purchaseRepository.delete(student);
+                purchaseRepository.delete(student);
             }
 
             return "removed the record";
@@ -146,14 +146,11 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public String getConfirmApprovalStatus(String userId, PurchaseCartDto approvalStatusDto) {
+    public String getConfirmApprovalStatus(String userId, PurchaseCartDto purchaseCartDto) {
         // using userid take all not null values of approvaluserid
-        List<StudentPurchaseEntity> studentPurchaseEntityList = purchaseRepository.findByUserId(userId);
+        List<StudentPurchaseEntity> studentPurchaseEntityList = purchaseRepository.findByUserIdAndCoursePriceIdAndCourseScheduleIdAndApprovalStatusIdNotNull(userId,
+                purchaseCartDto.getCoursePriceId(), purchaseCartDto.getCourseScheduleId());
 
-        Purchase:
-        for (StudentPurchaseEntity student : studentPurchaseEntityList) {
-
-        }
 
         return null;
     }
