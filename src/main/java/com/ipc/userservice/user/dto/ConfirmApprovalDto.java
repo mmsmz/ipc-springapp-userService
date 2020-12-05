@@ -1,53 +1,63 @@
 package com.ipc.userservice.user.dto;
 
-public class ConfirmApprovalDto extends Subjects{
+import java.util.ArrayList;
 
-    String comments;
-    String passcode;
-    String meetingId;
-    String approvalStatus;
-    String approvalStatusId;
+public class ConfirmApprovalDto extends Subjects {
 
-    public String getComments() {
-        return comments;
-    }
+	public ConfirmApprovalDto(String subjectName, ArrayList<SubjectCategory> subjectCategories, String comments,
+			String passcode, String meetingId, String approvalStatus, String approvalStatusId) {
+		super(subjectName, subjectCategories);
+		this.comments = comments;
+		this.passcode = passcode;
+		this.meetingId = meetingId;
+		this.approvalStatus = approvalStatus;
+		this.approvalStatusId = approvalStatusId;
+	}
 
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
+	String comments;
+	String passcode;
+	String meetingId;
+	String approvalStatus;
+	String approvalStatusId;
 
-    public String getPasscode() {
-        return passcode;
-    }
+	public String getComments() {
+		return comments;
+	}
 
-    public void setPasscode(String passcode) {
-        this.passcode = passcode;
-    }
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
-    public String getMeetingId() {
-        return meetingId;
-    }
+	public String getPasscode() {
+		return passcode;
+	}
 
-    public void setMeetingId(String meetingId) {
-        this.meetingId = meetingId;
-    }
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
+	}
 
-    public String getApprovalStatus() {
-        return approvalStatus;
-    }
+	public String getMeetingId() {
+		return meetingId;
+	}
 
-    public void setApprovalStatus(String approvalStatus) {
-        this.approvalStatus = approvalStatus;
-    }
+	public void setMeetingId(String meetingId) {
+		this.meetingId = meetingId;
+	}
 
-    public String getApprovalStatusId() {
-        return approvalStatusId;
-    }
+	public String getApprovalStatus() {
+		return approvalStatus;
+	}
 
-    public void setApprovalStatusId(String approvalStatusId) {
-        this.approvalStatusId = approvalStatusId;
-    }
+	public void setApprovalStatus(String approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
 
+	public String getApprovalStatusId() {
+		return approvalStatusId;
+	}
 
+	public void setApprovalStatusId(String approvalStatusId) {
+		this.approvalStatusId = approvalStatusId;
+	}
 
 }

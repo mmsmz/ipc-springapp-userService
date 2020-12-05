@@ -98,12 +98,12 @@ public class PurchaseController {
     // once confirmed this API used to display the below table.
 
     @PostMapping(value = "/getConfirmApprovalStatus", produces = "application/json")
-    public ResponseEntity<ResponseDto> getConfirmApproval(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
-        logger.info("Inside the Get Confirm Approval method Start" + purchaseCartDto.toString());
+    public ResponseEntity<ResponseDto> getConfirmApproval(@RequestHeader String userId) {
+        logger.info("Inside the Get Confirm Approval method Start" + userId);
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData(purchaseService.getConfirmApprovalStatus(userId, purchaseCartDto));
+        responseDto.setData(purchaseService.getConfirmApprovalStatus(userId));
         logger.info("Inside the  Get Confirm Approval method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
