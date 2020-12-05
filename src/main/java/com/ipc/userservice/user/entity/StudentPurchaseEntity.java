@@ -27,6 +27,14 @@ public class StudentPurchaseEntity {
     @Column(name = "apvlstatid")
     private String approvalStatusId;
 
+    public StudentPurchaseEntity(){}
+
+    public StudentPurchaseEntity(String userId, String coursePriceId, String courseScheduleId, String approvalStatusId) {
+        this.userId = userId;
+        this.coursePriceId = coursePriceId;
+        this.courseScheduleId = courseScheduleId;
+        this.approvalStatusId = approvalStatusId;
+    }
 
     public String getStudentPurchaseId() {
         return studentPurchaseId;

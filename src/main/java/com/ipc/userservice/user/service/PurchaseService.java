@@ -24,6 +24,7 @@ public interface PurchaseService {
     /* To allow Student to confirm the purchase details */
     String confirmPurchase(String userId,ApprovalStatusDto approvalStatusDto);
 
+    String getConfirmApprovalStatus(String userId,PurchaseCartDto approvalStatusDto);
 
 
 }

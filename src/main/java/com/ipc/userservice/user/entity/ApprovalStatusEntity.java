@@ -4,19 +4,17 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "approvalstatus")
-public class ApprovalStatus {
+public class ApprovalStatusEntity {
 
     @Id
     @GenericGenerator(name = "sequence_apvlstatid_id", strategy = "com.ipc.userservice.user.util.generateid.ApprovalStatusIdGenerator")
     @GeneratedValue(generator = "sequence_apvlstatid_id")
     @Column(name = "apvlstatid")
     private String approvalStatusId;
-    
-    @Column(name = "studpurid")
-    private String studentPurchaseID;
 
     @Column(name = "paymenttype")
     private String paymentType;
@@ -37,8 +35,7 @@ public class ApprovalStatus {
     private String comments;
 
     @Column(name = "date")
-    private Instant date; // only date
-
+    private LocalDate date; // only date
 
     public String getApprovalStatusId() {
         return approvalStatusId;
@@ -46,14 +43,6 @@ public class ApprovalStatus {
 
     public void setApprovalStatusId(String approvalStatusId) {
         this.approvalStatusId = approvalStatusId;
-    }
-
-    public String getStudentPurchaseID() {
-        return studentPurchaseID;
-    }
-
-    public void setStudentPurchaseID(String studentPurchaseID) {
-        this.studentPurchaseID = studentPurchaseID;
     }
 
     public String getPaymentType() {
@@ -104,12 +93,11 @@ public class ApprovalStatus {
         this.comments = comments;
     }
 
-    public Instant getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
-
 }
