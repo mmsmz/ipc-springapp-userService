@@ -1,5 +1,7 @@
 package com.ipc.userservice.user.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -9,7 +11,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "userid")
-    private String userid;
+    private String userId;
 
     @Column(name = "firstname")
     private String firstName;
@@ -21,10 +23,7 @@ public class UserEntity {
     private String mobile;
 
     @Column(name = "institutebranch")
-    private String institutebranch;
-
-    @Column(name = "deliveryaddress")
-    private String deliveryaddress;
+    private String instituteBranch;
 
     @Column(name = "date")
     private Instant date;
@@ -38,12 +37,12 @@ public class UserEntity {
     @Column(name = "loginstatus")
     private byte loginstatus;
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -70,20 +69,12 @@ public class UserEntity {
         this.mobile = mobile;
     }
 
-    public String getInstitutebranch() {
-        return institutebranch;
+    public String getInstituteBranch() {
+        return instituteBranch;
     }
 
-    public void setInstitutebranch(String institutebranch) {
-        this.institutebranch = institutebranch;
-    }
-
-    public String getDeliveryaddress() {
-        return deliveryaddress;
-    }
-
-    public void setDeliveryaddress(String deliveryaddress) {
-        this.deliveryaddress = deliveryaddress;
+    public void setInstituteBranch(String instituteBranch) {
+        this.instituteBranch = instituteBranch;
     }
 
     public Instant getDate() {

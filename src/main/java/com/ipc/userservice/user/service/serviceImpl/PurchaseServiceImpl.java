@@ -105,11 +105,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public String removeCourseRecordsFromSummary(String userId, PurchaseCartDto purchaseCartDto) {
 		try {
 			logger.info("Inside the Remove Course Records From Summary method Start");
-			List<StudentPurchaseEntity> studentPurchaseEntitylist = purchaseRepository
+			List<StudentPurchaseEntity> studentPurchaseEntityList = purchaseRepository
 					.findByUserIdAndCoursePriceIdAndCourseScheduleIdAndApprovalStatusId(userId,
 							purchaseCartDto.getCoursePriceId(), purchaseCartDto.getCourseScheduleId(), null);
 
-			for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
+			for (StudentPurchaseEntity student : studentPurchaseEntityList) {
 				purchaseRepository.delete(student);
 			}
 
