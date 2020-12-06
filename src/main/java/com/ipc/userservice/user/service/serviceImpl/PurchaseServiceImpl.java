@@ -62,8 +62,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public List<Subjects> getAddedCourseDetailsToSummary(String userId) {
 		List<Subjects> subjectsList = new ArrayList<>();
-		try {
 
+		try {
 			logger.info("Inside the Get Added Course Details To Summary method Start");
 
 			List<StudentPurchaseEntity> studentPurchaseEntitylist = purchaseRepository.findByUserId(userId);

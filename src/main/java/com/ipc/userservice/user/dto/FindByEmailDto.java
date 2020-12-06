@@ -3,7 +3,7 @@ package com.ipc.userservice.user.dto;
 public class FindByEmailDto {
 
     String email;
-    String userid;
+    String userId;
 
     public String getEmail() {
         return email;
@@ -13,11 +13,11 @@ public class FindByEmailDto {
         this.email = email;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

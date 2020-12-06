@@ -28,7 +28,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/findByEmail", produces = "application/json")
+    @PostMapping(value = "/findByEmail", produces = "application/json")
     public ResponseEntity<ResponseDto> findByEmail(@RequestBody FindByEmailDto findByEmailDto) {
         logger.info("Inside the Find By Email method Start");
 
