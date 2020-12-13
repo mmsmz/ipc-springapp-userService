@@ -2,40 +2,18 @@ package com.ipc.userservice.user.dto;
 
 public class ApprovalStatusDto {
 
-    private String approvalStatusId;
-    private String studentPurchaseId;
     private String paymentType;
     private String receiptImgLocation;
     private double amountDeposited;
     private String depositedBank;
     private String approvalStatus;
-    private String comments;
 
-    public ApprovalStatusDto(String approvalStatusId, String studentPurchaseId, String paymentType, String receiptImgLocation, double amountDeposited, String depositedBank, String approvalStatus, String comments) {
-        this.approvalStatusId = approvalStatusId;
-        this.studentPurchaseId = studentPurchaseId;
+    public ApprovalStatusDto(String paymentType, String receiptImgLocation, double amountDeposited, String depositedBank, String approvalStatus) {
         this.paymentType = paymentType;
         this.receiptImgLocation = receiptImgLocation;
         this.amountDeposited = amountDeposited;
         this.depositedBank = depositedBank;
         this.approvalStatus = approvalStatus;
-        this.comments = comments;
-    }
-
-    public String getApprovalStatusId() {
-        return approvalStatusId;
-    }
-
-    public void setApprovalStatusId(String approvalStatusId) {
-        this.approvalStatusId = approvalStatusId;
-    }
-
-    public String getStudentPurchaseId() {
-        return studentPurchaseId;
-    }
-
-    public void setStudentPurchaseId(String studentPurchaseId) {
-        this.studentPurchaseId = studentPurchaseId;
     }
 
     public String getPaymentType() {
@@ -78,11 +56,4 @@ public class ApprovalStatusDto {
         this.approvalStatus = approvalStatus;
     }
 
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
 }

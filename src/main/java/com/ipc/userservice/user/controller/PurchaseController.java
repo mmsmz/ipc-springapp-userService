@@ -97,7 +97,7 @@ public class PurchaseController {
 
     // once confirmed this API used to display the below table.
 
-    @PostMapping(value = "/getConfirmApprovalStatus", produces = "application/json")
+    @GetMapping(value = "/getConfirmApprovalStatus", produces = "application/json")
     public ResponseEntity<ResponseDto> getConfirmApproval(@RequestHeader String userId) {
         logger.info("Inside the Get Confirm Approval method Start" + userId);
 
@@ -108,6 +108,20 @@ public class PurchaseController {
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
+
+   /* check whether the user has purchased the */
+   @PostMapping(value = "/checksPurchasedAlready", produces = "application/json")
+   public ResponseEntity<ResponseDto> checksPurchasedAlready(@RequestHeader String userId, @RequestBody PurchaseCartDto purchaseCartDto) {
+
+       logger.info("Inside the Checks Purchased Already method Start" + "userID: " + userId + " " + purchaseCartDto.toString());
+
+       ResponseDto responseDto = new ResponseDto();
+       responseDto.setMessage(CommonConstant.SUCCESS);
+       responseDto.setData(purchaseService.checksPurchasedAlready(userId, purchaseCartDto));
+
+       logger.info("Inside the Checks Purchased Already method End");
+       return new ResponseEntity<>(responseDto, HttpStatus.OK);
+   }
 
 
 }

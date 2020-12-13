@@ -41,4 +41,25 @@ public class UserController {
     }
 
 
+
+    @GetMapping(value = "/getUserName", produces = "application/json")
+    public ResponseEntity<ResponseDto> getUserName(@RequestHeader String userId) {
+        logger.info("Inside the Get User Name method Start");
+
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(CommonConstant.SUCCESS);
+        responseDto.setData(userService.getUserName(userId));
+
+        logger.info("Inside the Get User Name method End");
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    String test() {
+        return "Welcome!!!";
+    }
+
+
+
+
 }

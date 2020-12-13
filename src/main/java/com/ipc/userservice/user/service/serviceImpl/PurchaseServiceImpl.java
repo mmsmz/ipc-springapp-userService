@@ -48,11 +48,21 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public String addCourseToPurchaseSummary(String userId, PurchaseCartDto purchaseCartDto) {
 		try {
 			StudentPurchaseEntity studentPurEntity = new StudentPurchaseEntity();
-			studentPurEntity.setUserId(userId);
-			studentPurEntity.setCoursePriceId(purchaseCartDto.getCoursePriceId());
-			studentPurEntity.setCourseScheduleId(purchaseCartDto.getCourseScheduleId());
-			purchaseRepository.save(studentPurEntity);
-			return CommonConstant.SUCCESSFULLY;
+			List<StudentPurchaseEntity> studentPurchaseEntityList = purchaseRepository
+					.findByUserIdAndCoursePriceIdAndCourseScheduleId(userId,
+							purchaseCartDto.getCoursePriceId(), purchaseCartDto.getCourseScheduleId());
+
+			if (studentPurchaseEntityList.size() != 0) {
+				return "Already Purchased";
+			} else {
+				studentPurEntity.setUserId(userId);
+				studentPurEntity.setCoursePriceId(purchaseCartDto.getCoursePriceId());
+				studentPurEntity.setCourseScheduleId(purchaseCartDto.getCourseScheduleId());
+				purchaseRepository.save(studentPurEntity);
+				return CommonConstant.SUCCESSFULLY;
+
+			}
+
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 			return e.getMessage();
@@ -67,7 +77,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 			logger.info("Inside the Get Added Course Details To Summary method Start");
 
 			List<StudentPurchaseEntity> studentPurchaseEntitylist = purchaseRepository.findByUserId(userId);
-			Purchase: for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
+			Purchase:
+			for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
 				Optional<CoursePriceEntity> temp = coursePriceRepository.findById(student.getCoursePriceId());
 				CoursePriceEntity cpEntity = temp.get();
 				Optional<CourseScheduleEntity> temp2 = courseScheduleRepository.findById(student.getCourseScheduleId());
@@ -129,10 +140,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 		ApprovalStatusEntity approvalStatus = new ApprovalStatusEntity();
 		approvalStatus.setAmountDeposited(approvalStatusDto.getAmountDeposited());
-		approvalStatus.setApprovalStatus(approvalStatusDto.getApprovalStatus());
-		approvalStatus.setComments(approvalStatusDto.getComments());
-		approvalStatus.setDepositedBank(approvalStatusDto.getDepositedBank());
+		String str = approvalStatusDto.getPaymentType();
+		if (str.equals("OnlinePurchase")) {
+			approvalStatus.setApprovalStatus("approved");
+		}
+		if (str.equals("BankDeposit") || str.equals("DirectPurchase")) {
+			approvalStatus.setApprovalStatus("pending");
+		}
 		approvalStatus.setPaymentType(approvalStatusDto.getPaymentType());
+		approvalStatus.setDepositedBank(approvalStatusDto.getDepositedBank());
 		approvalStatus.setReceiptImageLocation(approvalStatusDto.getReceiptImgLocation());
 		approvalStatus.setDate(localDate);
 		approvalStatusRepository.save(approvalStatus);
@@ -151,7 +167,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 		List<ConfirmApprovalDto> subjectsList = new ArrayList<>();
 		List<StudentPurchaseEntity> studentPurchaseEntitylist = purchaseRepository
 				.findByUserIdAndApprovalStatusIdNotNull(userId);
-		Purchase: for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
+		Purchase:
+		for (StudentPurchaseEntity student : studentPurchaseEntitylist) {
 			Optional<CoursePriceEntity> temp = coursePriceRepository.findById(student.getCoursePriceId());
 			CoursePriceEntity cpEntity = temp.get();
 			Optional<CourseScheduleEntity> temp2 = courseScheduleRepository.findById(student.getCourseScheduleId());
@@ -183,5 +200,27 @@ public class PurchaseServiceImpl implements PurchaseService {
 							courseScheduleEntity.getDay() + courseScheduleEntity.getTime()));
 		}
 		return subjectsList;
+	}
+
+
+	/* To check whether user already purchased the course  */
+	@Override
+	public String checksPurchasedAlready(String userId, PurchaseCartDto purchaseCartDto) {
+		try {
+			logger.info("Inside the checks Purchased Already method Start");
+			List<StudentPurchaseEntity> studentPurchaseEntityList = purchaseRepository
+					.findByUserIdAndCoursePriceIdAndCourseScheduleId(userId,
+							purchaseCartDto.getCoursePriceId(), purchaseCartDto.getCourseScheduleId());
+			if (studentPurchaseEntityList.isEmpty()) {
+				return "Continue Purchase";
+			}
+			else {
+				return "Already Purchased";
+			}
+
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+			return e.getMessage();
+		}
 	}
 }

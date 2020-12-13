@@ -29,4 +29,14 @@ public class UserServiceImpl implements UserService {
 
         return findByEmailDto;
     }
+
+
+    @Override
+    public String getUserName(String userId) {
+
+        UserEntity userNameEntity = userRepository.findByUserId(userId);
+//        findByEmailDto.setUserId(userNameEntity.getFirstName() + " " + userNameEntity.getLastName());
+
+        return userNameEntity.getFirstName() + " " + userNameEntity.getLastName();
+    }
 }

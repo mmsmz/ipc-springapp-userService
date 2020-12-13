@@ -1,20 +1,21 @@
 package com.ipc.userservice.user.dto;
 
 public class CourseSchedule {
-	private String CourseSchedulrId;
+	private String CourseScheduleId;
 	private String Schedule;
 
-	public String getCourseSchedulrId() {
-		return CourseSchedulrId;
-	}
 
-	public void setCourseSchedulrId(String courseSchedulrId) {
-		CourseSchedulrId = courseSchedulrId;
-	}
-
-	public CourseSchedule(String courseSchedulrId, String schedule) {
-		CourseSchedulrId = courseSchedulrId;
+	public CourseSchedule(String courseScheduleId, String schedule) {
+		CourseScheduleId = courseScheduleId;
 		Schedule = schedule;
+	}
+
+	public String getCourseScheduleId() {
+		return CourseScheduleId;
+	}
+
+	public void setCourseScheduleId(String courseScheduleId) {
+		CourseScheduleId = courseScheduleId;
 	}
 
 	public String getSchedule() {

@@ -16,6 +16,10 @@ public class UserEntity {
     @Column(name = "firstname")
     private String firstName;
 
+    @Column(name = "lastname")
+    private String lastName;
+
+
     @Column(name = "email")
     private String email;
 
@@ -51,6 +55,14 @@ public class UserEntity {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

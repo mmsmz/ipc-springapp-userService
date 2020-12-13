@@ -12,4 +12,7 @@ public interface UserService {
     Request email
     Return userId */
     FindByEmailDto findByEmail(FindByEmailDto findByEmailDto);
+
+    //get userName
+    String getUserName(String userId);
 }

@@ -92,9 +92,10 @@ public class AdminController {
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
-        responseDto.setData( adminService.addCoursePriceDetails(coursePriceDto));
+        responseDto.setData(adminService.addCoursePriceDetails(coursePriceDto));
         logger.info("Inside the Add Course Price Details method End");
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
+
 }

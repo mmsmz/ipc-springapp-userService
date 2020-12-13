@@ -17,4 +17,8 @@ public interface PurchaseRepository extends JpaRepository<StudentPurchaseEntity,
 
 	List<StudentPurchaseEntity> findByUserIdAndApprovalStatusIdNotNull(String userId);
 
+	List<StudentPurchaseEntity> findByUserIdAndCoursePriceIdAndCourseScheduleId(String userId,
+																				String coursePriceId,
+																				String courseScheduleId);
+
 }

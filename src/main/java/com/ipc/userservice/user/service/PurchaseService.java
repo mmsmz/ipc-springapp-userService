@@ -25,6 +25,9 @@ public interface PurchaseService {
 
 	List<ConfirmApprovalDto> getConfirmApprovalStatus(String userId);
 
+	/* To check whether user already purchased the course  */
+	String checksPurchasedAlready(String userId, PurchaseCartDto purchaseCartDto);
+
 
 
 }
