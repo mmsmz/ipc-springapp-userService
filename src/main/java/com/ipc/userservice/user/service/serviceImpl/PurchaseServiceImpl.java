@@ -70,8 +70,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public List<Subjects> getAddedCourseDetailsToSummary(String userId) {
-		List<Subjects> subjectsList = new ArrayList<>();
+	public List<SubjectSpecific> getAddedCourseDetailsToSummary(String userId) {
+		List<SubjectSpecific> subjectsList = new ArrayList<>();
 
 		try {
 			logger.info("Inside the Get Added Course Details To Summary method Start");
@@ -84,25 +84,21 @@ public class PurchaseServiceImpl implements PurchaseService {
 				Optional<CourseScheduleEntity> temp2 = courseScheduleRepository.findById(student.getCourseScheduleId());
 				CourseScheduleEntity courseScheduleEntity = temp2.get();
 
-				for (Subjects subjects : subjectsList) {
-					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
-						ArrayList<CourseSchedule> shedule = new ArrayList<>();
-
-						subjects.getSubjectCategories().add(new SubjectCategory(cpEntity.getCoursePriceId(),
-								cpEntity.getSubjectCategory(), cpEntity.getPrice(), shedule));
-
-						shedule.add(new CourseSchedule(courseScheduleEntity.getCourseScheduleId(),
-								courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime()));
-						continue Purchase;
-					}
-				}
-				subjectsList.add(new Subjects(cpEntity.getSubjectName(), new ArrayList<>()));
-				subjectsList.get(subjectsList.size() - 1).getSubjectCategories()
-						.add(new SubjectCategory(cpEntity.getCoursePriceId(), cpEntity.getSubjectCategory(),
-								cpEntity.getPrice(), new ArrayList<>()));
-				subjectsList.get(subjectsList.size() - 1).getSubjectCategories().get(0).getSchedule()
-						.add(new CourseSchedule(courseScheduleEntity.getCourseScheduleId(),
-								courseScheduleEntity.getDay() + courseScheduleEntity.getTime()));
+//				for (SubjectSpecific subjects : subjectsList) {
+//					if (subjects.getSubjectName().equals(cpEntity.getSubjectName())) {
+//						ArrayList<CourseSchedule> shedule = new ArrayList<>();
+//
+//						subjects.getSubjectCategories().add(new SubjectCategory(cpEntity.getCoursePriceId(),
+//								cpEntity.getSubjectCategory(), cpEntity.getPrice(), shedule));
+//
+//						shedule.add(new CourseSchedule(courseScheduleEntity.getCourseScheduleId(),
+//								courseScheduleEntity.getDay() + " " + courseScheduleEntity.getTime()));
+//						continue Purchase;
+//					}
+//				}
+				//				String subjectName, String coursePriceId, String subjectCategory, double price, String schedule
+				subjectsList.add(new SubjectSpecific(cpEntity.getSubjectName(), cpEntity.getCoursePriceId(), cpEntity.getSubjectCategory(),
+						cpEntity.getPrice(), courseScheduleEntity.getCourseScheduleId(), courseScheduleEntity.getDay() +" "+ courseScheduleEntity.getTime()));
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());

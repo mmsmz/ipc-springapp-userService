@@ -1,10 +1,6 @@
 package com.ipc.userservice.user.controller;
 
-import com.ipc.userservice.user.dto.ApprovalStatusDto;
-import com.ipc.userservice.user.dto.PurchaseCartDto;
-import com.ipc.userservice.user.dto.ResponseDto;
-import com.ipc.userservice.user.dto.StudentPurchaseDto;
-import com.ipc.userservice.user.dto.Subjects;
+import com.ipc.userservice.user.dto.*;
 import com.ipc.userservice.user.service.PurchaseService;
 import com.ipc.userservice.user.util.CommonConstant;
 import org.slf4j.Logger;
@@ -52,7 +48,7 @@ public class PurchaseController {
     @GetMapping(value = "/getAddedCourseDetailsToSummary", produces = "application/json")
     public ResponseEntity<ResponseDto> getAddedCourseDetailsToSummary(@RequestHeader String userId) {
         logger.info("Inside the Get Added Course Details To Summary method Start");
-        List<Subjects> addedCourseList = purchaseService.getAddedCourseDetailsToSummary(userId);
+        List<SubjectSpecific> addedCourseList = purchaseService.getAddedCourseDetailsToSummary(userId);
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setMessage(CommonConstant.SUCCESS);
