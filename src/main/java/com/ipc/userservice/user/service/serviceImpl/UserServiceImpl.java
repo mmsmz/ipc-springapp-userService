@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
       UserEntity userNameEntity = userRepository.findByUserId(userId);
 //    findByEmailDto.setUserId(userNameEntity.getFirstName() + " " + userNameEntity.getLastName());
-
       return userNameEntity.getFirstName() + " " + userNameEntity.getLastName();
     }
 }
